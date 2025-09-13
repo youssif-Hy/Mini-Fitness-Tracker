@@ -10,6 +10,7 @@ namespace Mini_Fitness_Tracker
     {
         static void Main(string[] args)
         {
+            Console.WriteLine("Welcome to the Mini Fitness Tracker!");
         }
     }
 }
