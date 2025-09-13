@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Mini_Fitness_Tracker.Ui
 {
-    internal class ConsoleUI
+    public class ConsoleUI
     {
     }
 }

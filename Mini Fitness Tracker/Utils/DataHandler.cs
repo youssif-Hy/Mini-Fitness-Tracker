@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Mini_Fitness_Tracker.Utils
 {
-    internal class DataHandler
+    public class DataHandler
     {
     }
 }

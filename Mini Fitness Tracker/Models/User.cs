@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Mini_Fitness_Tracker.Models
 {
-    internal class User
+    public class User
     {
     }
 }
