@@ -51,6 +51,7 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Ui\ConsoleUI.cs" />
+    <Compile Include="Engine\Vaidation.cs" />
     <Compile Include="Utils\DataHandler.cs" />
   </ItemGroup>
   <ItemGroup>
