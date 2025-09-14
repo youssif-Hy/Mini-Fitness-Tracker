@@ -8,5 +8,7 @@ namespace Mini_Fitness_Tracker.Models
 {
     public class User
     {
+        Console.WriteLine("");
+        
     }
 }
