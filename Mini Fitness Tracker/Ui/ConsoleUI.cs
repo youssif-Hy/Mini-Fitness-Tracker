@@ -11,8 +11,9 @@ namespace Mini_Fitness_Tracker.Ui
 {
     public class ConsoleUI
     {
-        public void DisplayWelcomeMessage()
+        public static void DisplayWelcomeMessage()
         {
+            Console.ForegroundColor = ConsoleColor.Cyan;
             Console.WriteLine(Program.CenterText("███╗░░░███╗██╗███╗░░██╗██╗  ███████╗██╗████████╗███╗░░██╗███████╗░██████╗░██████╗"));
             Console.WriteLine(Program.CenterText("████╗░████║██║████╗░██║██║  ██╔════╝██║╚══██╔══╝████╗░██║██╔════╝██╔════╝██╔════╝"));
             Console.WriteLine(Program.CenterText("██╔████╔██║██║██╔██╗██║██║  █████╗░░██║░░░██║░░░██╔██╗██║█████╗░░╚█████╗░╚█████╗░"));
@@ -34,16 +35,16 @@ namespace Mini_Fitness_Tracker.Ui
             Console.ForegroundColor = ConsoleColor.White;
         }
 
-        public int DisplayMenu()
+        public static int DisplayMenu()
         {
             Console.ForegroundColor = ConsoleColor.DarkGreen;
             Console.WriteLine(Program.CenterText("Welcome to the Mini Fitness Tracker!"));
             Console.ForegroundColor = ConsoleColor.White;
-            Console.WriteLine(Program.CenterText("1. Log In"));
-            Console.WriteLine(Program.CenterText("2. Register"));
-            Console.WriteLine(Program.CenterText("3. Exit"));
+            Console.WriteLine("1. Log In");
+            Console.WriteLine("2. Register");
+            Console.WriteLine("3. Exit");
             Console.ForegroundColor = ConsoleColor.DarkGray;
-            Console.Write(Program.CenterText("Enter your choice (1-3): "));
+            Console.Write("Enter your choice (1-3): ");
             Console.ForegroundColor = ConsoleColor.White;
             int option;
             //loop للتأكد من إدخال المستخدم خيار صحيح
@@ -74,7 +75,7 @@ namespace Mini_Fitness_Tracker.Ui
             return option;
         }
         // دالة LogIn تقوم بعرض واجهة تسجيل الدخول للمستخدم
-        static void LogIn()
+        public static void LogIn()
         {
             Console.Clear();
             Console.ForegroundColor = ConsoleColor.Cyan;
@@ -114,7 +115,7 @@ namespace Mini_Fitness_Tracker.Ui
             // return isValidUser;
         }
         // دالة Register تقوم بعرض واجهة تسجيل مستخدم جديد
-        static void Register()
+        public static void Register()
         {
             Console.Clear();
             Console.ForegroundColor = ConsoleColor.Cyan;
