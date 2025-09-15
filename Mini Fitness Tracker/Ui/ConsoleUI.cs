@@ -37,6 +37,7 @@ namespace Mini_Fitness_Tracker.Ui
 
         public static int DisplayMenu()
         {
+            Console.Clear();
             Console.ForegroundColor = ConsoleColor.DarkGreen;
             Console.WriteLine(Program.CenterText("Welcome to the Mini Fitness Tracker!"));
             Console.ForegroundColor = ConsoleColor.White;

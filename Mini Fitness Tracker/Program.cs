@@ -12,6 +12,26 @@ namespace Mini_Fitness_Tracker
         static void Main()
         {
             ConsoleUI.DisplayWelcomeMessage();
+
+
+            int userOption = ConsoleUI.DisplayMenu();
+            switch(userOption)
+            {
+                case 1:
+                    ConsoleUI.LogIn();
+                    break;
+                case 2:
+                    ConsoleUI.Register();
+                    break;
+                case 3:
+                    // threed Massege 
+                    break;
+                default:
+                    //
+                    break;
+
+
+            }
         }
         // دالة CenterText تقوم بجعل النص في وسط الشاشة
         public static string CenterText(string text)
