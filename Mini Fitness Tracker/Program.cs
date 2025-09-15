@@ -12,7 +12,6 @@ namespace Mini_Fitness_Tracker
         static void Main()
         {
             ConsoleUI.DisplayWelcomeMessage();
-            ConsoleUI.DisplayMenu();
             int userOption = ConsoleUI.DisplayMenu();
             switch(userOption)
             {
