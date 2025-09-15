@@ -11,7 +11,7 @@ namespace Mini_Fitness_Tracker.Ui
 {
     public class ConsoleUI
     {
-        public void DisplayWelcomeMessage()
+        public static void DisplayWelcomeMessage()
         {
             Console.WriteLine(Program.CenterText("███╗░░░███╗██╗███╗░░██╗██╗  ███████╗██╗████████╗███╗░░██╗███████╗░██████╗░██████╗"));
             Console.WriteLine(Program.CenterText("████╗░████║██║████╗░██║██║  ██╔════╝██║╚══██╔══╝████╗░██║██╔════╝██╔════╝██╔════╝"));
@@ -34,7 +34,7 @@ namespace Mini_Fitness_Tracker.Ui
             Console.ForegroundColor = ConsoleColor.White;
         }
 
-        public int DisplayMenu()
+        public static int DisplayMenu()
         {
             Console.ForegroundColor = ConsoleColor.DarkGreen;
             Console.WriteLine(Program.CenterText("Welcome to the Mini Fitness Tracker!"));
@@ -74,7 +74,7 @@ namespace Mini_Fitness_Tracker.Ui
             return option;
         }
         // دالة LogIn تقوم بعرض واجهة تسجيل الدخول للمستخدم
-        static void LogIn()
+        public static void LogIn()
         {
             Console.Clear();
             Console.ForegroundColor = ConsoleColor.Cyan;
@@ -114,7 +114,7 @@ namespace Mini_Fitness_Tracker.Ui
             // return isValidUser;
         }
         // دالة Register تقوم بعرض واجهة تسجيل مستخدم جديد
-        static void Register()
+        public static void Register()
         {
             Console.Clear();
             Console.ForegroundColor = ConsoleColor.Cyan;
