@@ -56,7 +56,7 @@ namespace Mini_Fitness_Tracker.Ui
                 // تعيين موضع المؤشر في الشاشة
                 Console.SetCursorPosition(24, 4);
                 // قراءة إدخال المستخدم والتحقق من صحته
-                option = Vaidation.ValidataInput(Console.ReadLine(), 24, 4, 0, 5);
+                option = Validation.ValidataInput(Console.ReadLine(), 24, 4, 0, 5);
                 // إذا كان الخيار غير صحيح، عرض رسالة الخطأ
                 if (option != 1 && option != 2 && option != 3)
                 {
@@ -136,13 +136,13 @@ namespace Mini_Fitness_Tracker.Ui
             Console.WriteLine(Program.CenterText("+================================================================================+"));
             Console.ForegroundColor = ConsoleColor.White;
             Console.SetCursorPosition(42, 3);
-            string username = Vaidation.ValidataUsername(Console.ReadLine(), 42, 3, 0, 14);
+            string username = Validation.ValidataUsername(Console.ReadLine(), 42, 3, 0, 14);
             Console.SetCursorPosition(42, 4);
-            string password = Vaidation.ValidataPassword(Console.ReadLine(), 42, 4, 0, 14);
+            string password = Validation.ValidataPassword(Console.ReadLine(), 42, 4, 0, 14);
             Console.SetCursorPosition(42, 5);
-            string name = Vaidation.ValiDataName(Console.ReadLine(), 42, 5, 0, 14);
+            string name = Validation.ValiDataName(Console.ReadLine(), 42, 5, 0, 14);
             Console.SetCursorPosition(42, 6);
-            string Age = Vaidation.ValiDataAge(Console.ReadLine(), 42, 6, 0, 14);
+            string Age = Validation.ValiDataAge(Console.ReadLine(), 42, 6, 0, 14);
             Console.SetCursorPosition(42, 7);
 
             //******************************************************************************
@@ -190,7 +190,7 @@ namespace Mini_Fitness_Tracker.Ui
                 // تعيين موضع المؤشر في الشاشة
                 Console.SetCursorPosition(24, 4);
                 // قراءة إدخال المستخدم والتحقق من صحته
-                option = Vaidation.ValidataInput(Console.ReadLine(), 24, 4, 0, 5);
+                option = Validation.ValidataInput(Console.ReadLine(), 24, 4, 0, 5);
                 // إذا كان الخيار غير صحيح، عرض رسالة الخطأ
                 if (option < 1 && option > 5)
                 {

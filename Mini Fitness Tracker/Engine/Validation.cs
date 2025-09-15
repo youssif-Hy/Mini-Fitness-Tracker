@@ -9,7 +9,7 @@ using static Mini_Fitness_Tracker.Ui.ConsoleUI;
 
 namespace Mini_Fitness_Tracker.Engine
 {
-    public class Vaidation
+    public class Validation
     {
         //دالة ValidateInput تقوم بالتحقق من صحة الإدخال المدخل من قبل المستخدم
         public static int ValidataInput(string input, int xaxis, int yaxis, int xaxis1, int yaxis1)
