@@ -61,7 +61,7 @@
     <Folder Include="Data\" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="ahmed.gitignore" />
+    <Content Include=".gitignore" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
