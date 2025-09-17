@@ -9,5 +9,6 @@ namespace Mini_Fitness_Tracker.Utils
     public class DataHandler
     {
 
+
     }
 }
