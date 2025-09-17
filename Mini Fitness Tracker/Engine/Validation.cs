@@ -156,7 +156,7 @@ namespace Mini_Fitness_Tracker.Engine
                 {
 
                     // التحقق من أن تاريخ الميلاد لا يكون في المستقبل
-                    if (age <= 13 && age >= 100)
+                    if (age >= 13 && age <= 100)
                     {
                         Space(title, xaxis1, yaxis1);
                         return Age;
