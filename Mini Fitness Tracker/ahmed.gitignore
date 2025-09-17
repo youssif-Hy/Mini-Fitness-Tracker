@@ -1,0 +1,23 @@
+﻿# Ignore Visual Studio cache files
+.vs/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# Build results
+[Dd]ebug/
+[Rr]elease/
+x64/
+x86/
+build/
+bin/
+obj/
+
+# Rider / VS Code
+.idea/
+.vscode/
+
+# Others
+*.db
+*.vsidx
