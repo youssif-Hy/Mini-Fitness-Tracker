@@ -170,6 +170,7 @@ namespace Mini_Fitness_Tracker.Ui
         }
         public static int mainMenu()
         {
+            Console.Clear();
             Console.ForegroundColor = ConsoleColor.DarkGreen;
             Console.WriteLine(Program.CenterText("Main Menu"));
             Console.ForegroundColor = ConsoleColor.White;
@@ -179,7 +180,7 @@ namespace Mini_Fitness_Tracker.Ui
             Console.WriteLine("4. Progress");
             Console.WriteLine("5. Logout");
             Console.ForegroundColor = ConsoleColor.DarkGray;
-            Console.Write(Program.CenterText("Enter your choice (1-5): "));
+            Console.Write("Enter your choice (1-5): ");
             Console.ForegroundColor = ConsoleColor.White;
             int option;
             //loop للتأكد من إدخال المستخدم خيار صحيح
