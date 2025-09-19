@@ -37,28 +37,10 @@ namespace Mini_Fitness_Tracker.Models
             set { caloriesBurnedPermin = value; }
         }
 
-
-
-
-
-
-
         public double CalculateCalories(double durationInMinutes)
         {
             return caloriesBurnedPermin * durationInMinutes;
         }
-
-
-
-
-
-
-
-
-
-
-
-
         public void ShowExercise()
         {
             Console.WriteLine("Exercise Name: " + name);

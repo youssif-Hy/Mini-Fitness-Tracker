@@ -15,22 +15,22 @@ namespace Mini_Fitness_Tracker.Ui
         public static void DisplayWelcomeMessage()
         {
             Console.ForegroundColor = ConsoleColor.Cyan;
-            Console.WriteLine(Program.CenterText("███╗░░░███╗██╗███╗░░██╗██╗  ███████╗██╗████████╗███╗░░██╗███████╗░██████╗░██████╗"));
-            Console.WriteLine(Program.CenterText("████╗░████║██║████╗░██║██║  ██╔════╝██║╚══██╔══╝████╗░██║██╔════╝██╔════╝██╔════╝"));
-            Console.WriteLine(Program.CenterText("██╔████╔██║██║██╔██╗██║██║  █████╗░░██║░░░██║░░░██╔██╗██║█████╗░░╚█████╗░╚█████╗░"));
-            Console.WriteLine(Program.CenterText("██║╚██╔╝██║██║██║╚████║██║  ██╔══╝░░██║░░░██║░░░██║╚████║██╔══╝░░░╚═══██╗░╚═══██╗"));
-            Console.WriteLine(Program.CenterText("██║░╚═╝░██║██║██║░╚███║██║  ██║░░░░░██║░░░██║░░░██║░╚███║███████╗██████╔╝██████╔╝"));
-            Console.WriteLine(Program.CenterText("╚═╝░░░░░╚═╝╚═╝╚═╝░░╚══╝╚═╝  ╚═╝░░░░░╚═╝░░░╚═╝░░░╚═╝░░╚══╝╚══════╝╚═════╝░╚═════╝░"));
-            Console.WriteLine(Program.CenterText("████████╗██████╗░░█████╗░░█████╗░██╗░░██╗███████╗██████╗░"));
-            Console.WriteLine(Program.CenterText("╚══██╔══╝██╔══██╗██╔══██╗██╔══██╗██║░██╔╝██╔════╝██╔══██╗"));
-            Console.WriteLine(Program.CenterText("░░░██║░░░██████╔╝███████║██║░░╚═╝█████═╝░█████╗░░██████╔╝"));
-            Console.WriteLine(Program.CenterText("░░░██║░░░██╔══██╗██╔══██║██║░░██╗██╔═██╗░██╔══╝░░██╔══██╗"));
-            Console.WriteLine(Program.CenterText("░░░██║░░░██║░░██║██║░░██║╚█████╔╝██║░╚██╗███████╗██║░░██║"));
-            Console.WriteLine(Program.CenterText("░░░╚═╝░░░╚═╝░░╚═╝╚═╝░░╚═╝░╚════╝░╚═╝░░╚═╝╚══════╝╚═╝░░╚═╝"));
+            Console.WriteLine(FitnessAppEngine.CenterText("███╗░░░███╗██╗███╗░░██╗██╗  ███████╗██╗████████╗███╗░░██╗███████╗░██████╗░██████╗"));
+            Console.WriteLine(FitnessAppEngine.CenterText("████╗░████║██║████╗░██║██║  ██╔════╝██║╚══██╔══╝████╗░██║██╔════╝██╔════╝██╔════╝"));
+            Console.WriteLine(FitnessAppEngine.CenterText("██╔████╔██║██║██╔██╗██║██║  █████╗░░██║░░░██║░░░██╔██╗██║█████╗░░╚█████╗░╚█████╗░"));
+            Console.WriteLine(FitnessAppEngine.CenterText("██║╚██╔╝██║██║██║╚████║██║  ██╔══╝░░██║░░░██║░░░██║╚████║██╔══╝░░░╚═══██╗░╚═══██╗"));
+            Console.WriteLine(FitnessAppEngine.CenterText("██║░╚═╝░██║██║██║░╚███║██║  ██║░░░░░██║░░░██║░░░██║░╚███║███████╗██████╔╝██████╔╝"));
+            Console.WriteLine(FitnessAppEngine.CenterText("╚═╝░░░░░╚═╝╚═╝╚═╝░░╚══╝╚═╝  ╚═╝░░░░░╚═╝░░░╚═╝░░░╚═╝░░╚══╝╚══════╝╚═════╝░╚═════╝░"));
+            Console.WriteLine(FitnessAppEngine.CenterText("████████╗██████╗░░█████╗░░█████╗░██╗░░██╗███████╗██████╗░"));
+            Console.WriteLine(FitnessAppEngine.CenterText("╚══██╔══╝██╔══██╗██╔══██╗██╔══██╗██║░██╔╝██╔════╝██╔══██╗"));
+            Console.WriteLine(FitnessAppEngine.CenterText("░░░██║░░░██████╔╝███████║██║░░╚═╝█████═╝░█████╗░░██████╔╝"));
+            Console.WriteLine(FitnessAppEngine.CenterText("░░░██║░░░██╔══██╗██╔══██║██║░░██╗██╔═██╗░██╔══╝░░██╔══██╗"));
+            Console.WriteLine(FitnessAppEngine.CenterText("░░░██║░░░██║░░██║██║░░██║╚█████╔╝██║░╚██╗███████╗██║░░██║"));
+            Console.WriteLine(FitnessAppEngine.CenterText("░░░╚═╝░░░╚═╝░░╚═╝╚═╝░░╚═╝░╚════╝░╚═╝░░╚═╝╚══════╝╚═╝░░╚═╝"));
             Console.ForegroundColor = ConsoleColor.DarkGreen;
-            Console.WriteLine(Program.CenterText("Welcome to the Mini Fitness Tracker🏋️!"));
+            Console.WriteLine(FitnessAppEngine.CenterText("Welcome to the Mini Fitness Tracker🏋️!"));
             Console.ForegroundColor = ConsoleColor.DarkGray;
-            Console.Write(Program.CenterText("Press any key to continue..."));
+            Console.Write(FitnessAppEngine.CenterText("Press any key to continue..."));
             Console.ReadKey();
             Console.Clear();
             Console.ForegroundColor = ConsoleColor.White;
@@ -40,7 +40,7 @@ namespace Mini_Fitness_Tracker.Ui
         {
             Console.Clear();
             Console.ForegroundColor = ConsoleColor.DarkGreen;
-            Console.WriteLine(Program.CenterText("Welcome to the Mini Fitness Tracker🏋️!"));
+            Console.WriteLine(FitnessAppEngine.CenterText("Welcome to the Mini Fitness Tracker🏋️!"));
             Console.ForegroundColor = ConsoleColor.White;
             Console.WriteLine("1. Log In");
             Console.WriteLine("2. Register");
@@ -58,15 +58,15 @@ namespace Mini_Fitness_Tracker.Ui
             Console.Clear();
             Console.ForegroundColor = ConsoleColor.Cyan;
             // ASCII Art لعرض عنوان تسجيل الدخول 
-            Console.WriteLine(Program.CenterText("╔══════════════════════════════════════════════════════╗"));
-            Console.WriteLine(Program.CenterText("║                       LOG IN                         ║"));
-            Console.WriteLine(Program.CenterText("║               --------------------------             ║"));
-            Console.WriteLine(Program.CenterText("║                                                      ║"));
-            Console.WriteLine(Program.CenterText("║   ➤ Enter Your Username :                            ║"));
-            Console.WriteLine(Program.CenterText("║   ➤ Enter Your Password :                            ║"));
-            Console.WriteLine(Program.CenterText("║                                                      ║"));
-            Console.WriteLine(Program.CenterText("║               [ Press ENTER to Submit ]              ║"));
-            Console.WriteLine(Program.CenterText("╚══════════════════════════════════════════════════════╝"));
+            Console.WriteLine(FitnessAppEngine.CenterText("╔══════════════════════════════════════════════════════╗"));
+            Console.WriteLine(FitnessAppEngine.CenterText("║                       LOG IN                         ║"));
+            Console.WriteLine(FitnessAppEngine.CenterText("║               --------------------------             ║"));
+            Console.WriteLine(FitnessAppEngine.CenterText("║                                                      ║"));
+            Console.WriteLine(FitnessAppEngine.CenterText("║   ➤ Enter Your Username :                            ║"));
+            Console.WriteLine(FitnessAppEngine.CenterText("║   ➤ Enter Your Password :                            ║"));
+            Console.WriteLine(FitnessAppEngine.CenterText("║                                                      ║"));
+            Console.WriteLine(FitnessAppEngine.CenterText("║               [ Press ENTER to Submit ]              ║"));
+            Console.WriteLine(FitnessAppEngine.CenterText("╚══════════════════════════════════════════════════════╝"));
             Console.ForegroundColor = ConsoleColor.White;
             Console.SetCursorPosition(59, 4); // اعادة تعيين موضع المؤشر لاسم المستخدم
             string user_name = Console.ReadLine();
@@ -75,15 +75,15 @@ namespace Mini_Fitness_Tracker.Ui
             bool isValidUser = DataHandler.CheckLogin(user_name, password);
             if (isValidUser)
             {
-                Console.WriteLine(Program.CenterText("Login successful!"));
-                Console.WriteLine(Program.CenterText("Press any key to continue..."));
+                Console.WriteLine(FitnessAppEngine.CenterText("Login successful!"));
+                Console.WriteLine(FitnessAppEngine.CenterText("Press any key to continue..."));
                 Console.ReadKey();
                 Console.Clear();
             }
             else
             {
-                Console.WriteLine(Program.CenterText("Invalid username or password. Please try again."));
-                Console.WriteLine(Program.CenterText("Press any key to continue..."));
+                Console.WriteLine(FitnessAppEngine.CenterText("Invalid username or password. Please try again."));
+                Console.WriteLine(FitnessAppEngine.CenterText("Press any key to continue..."));
                 Console.ReadKey();
                 Console.Clear();
             }
@@ -95,19 +95,19 @@ namespace Mini_Fitness_Tracker.Ui
             Console.Clear();
             Console.ForegroundColor = ConsoleColor.Cyan;
             // عرض واجهة المستخدم لتسجيل حساب جديد
-            Console.WriteLine(Program.CenterText("+================================================================================+"));
-            Console.WriteLine(Program.CenterText("|                                 Register                                       |"));
-            Console.WriteLine(Program.CenterText("+================================================================================+"));
-            Console.WriteLine(Program.CenterText("| ➤ Username          :                                                          |"));
-            Console.WriteLine(Program.CenterText("| ➤ Password          :                                                          |"));
-            Console.WriteLine(Program.CenterText("| ➤ Name              :                                                          |"));
-            Console.WriteLine(Program.CenterText("| ➤ Age               :                                                          |"));
-            Console.WriteLine(Program.CenterText("| ➤ Height            :                                                          |"));
-            Console.WriteLine(Program.CenterText("| ➤ Weight            :                                                          |"));
-            Console.WriteLine(Program.CenterText("+================================================================================+"));
-            Console.WriteLine(Program.CenterText("|          [ Please enter the required information above ]                       |"));
-            Console.WriteLine(Program.CenterText("|          [ Press ENTER after each input to continue ]                          |"));
-            Console.WriteLine(Program.CenterText("+================================================================================+"));
+            Console.WriteLine(FitnessAppEngine.CenterText("+================================================================================+"));
+            Console.WriteLine(FitnessAppEngine.CenterText("|                                 Register                                       |"));
+            Console.WriteLine(FitnessAppEngine.CenterText("+================================================================================+"));
+            Console.WriteLine(FitnessAppEngine.CenterText("| ➤ Username          :                                                          |"));
+            Console.WriteLine(FitnessAppEngine.CenterText("| ➤ Password          :                                                          |"));
+            Console.WriteLine(FitnessAppEngine.CenterText("| ➤ Name              :                                                          |"));
+            Console.WriteLine(FitnessAppEngine.CenterText("| ➤ Age               :                                                          |"));
+            Console.WriteLine(FitnessAppEngine.CenterText("| ➤ Height            :                                                          |"));
+            Console.WriteLine(FitnessAppEngine.CenterText("| ➤ Weight            :                                                          |"));
+            Console.WriteLine(FitnessAppEngine.CenterText("+================================================================================+"));
+            Console.WriteLine(FitnessAppEngine.CenterText("|          [ Please enter the required information above ]                       |"));
+            Console.WriteLine(FitnessAppEngine.CenterText("|          [ Press ENTER after each input to continue ]                          |"));
+            Console.WriteLine(FitnessAppEngine.CenterText("+================================================================================+"));
             Console.ForegroundColor = ConsoleColor.White;
             Console.SetCursorPosition(42, 3);
             string username = Validation.ValidataUsername(Console.ReadLine(), 42, 3, 0, 14);
@@ -117,28 +117,13 @@ namespace Mini_Fitness_Tracker.Ui
             string name = Validation.ValiDataName(Console.ReadLine(), 42, 5, 0, 14);
             Console.SetCursorPosition(42, 6);
             string Age = Validation.ValiDataAge(Console.ReadLine(), 42, 6, 0, 14);
-            //Console.SetCursorPosition(42, 7);
-
-            //******************************************************************************
-            // Ahmed mo (Engine)
-            // يا احمد عايزك نعمل دالة في محرك التطبيق اسمها ValidataHeight بنفس الطريقة اللي عملتها في باقي ميثودز التحقق
-            string Height = "0";// Vaidation.ValidataHeight(Console.ReadLine(), 42, 7, 0, 14);
-            //******************************************************************************
-
-            //Console.SetCursorPosition(42, 8);
-            //******************************************************************************
-            // Ahmed mo (Engine)
-            // يا احمد عايزك نعمل دالة في محرك التطبيق اسمها ValidataWeight بنفس الطريقة اللي عملتها في باقي ميثودز التحقق
-            string Weight = "0";// Vaidation.ValidataWeight(Console.ReadLine(), 42, 8, 0, 14);
-            //******************************************************************************
-
-            //***********************************************************************************************************************
-            // هو انا مش عارف هي الميثود دي المفروض مين اللي بيعملها المهم اللي هيعمبها يبقى يعملها ويشيل الكومنتات
-            // هنا عازك نعمل ميثود في محرك التطبيق اسمها Register بتاخد البراميترز دي عشان تسجل المستخدم
-             DataHandler.Register(username, password, name, int.Parse(Age) , double.Parse(Height), double.Parse(Weight));
-            //***********************************************************************************************************************
-            Console.WriteLine(Program.CenterText("Registration successful!"));
-            Console.WriteLine(Program.CenterText("Press any key to continue..."));
+            Console.SetCursorPosition(42, 7);
+            string Height = Validation.ValidataHeight(Console.ReadLine(), 42, 7, 0, 14);
+            Console.SetCursorPosition(42, 8);
+            string Weight =Validation.ValidataWeight(Console.ReadLine(), 42, 8, 0, 14);
+            DataHandler.Register(username, password, name, int.Parse(Age) , double.Parse(Height), double.Parse(Weight));
+            Console.WriteLine(FitnessAppEngine.CenterText("Registration successful!"));
+            Console.WriteLine(FitnessAppEngine.CenterText("Press any key to continue..."));
             Console.ReadKey();
             Console.Clear();
         }
@@ -146,7 +131,7 @@ namespace Mini_Fitness_Tracker.Ui
         {
             Console.Clear();
             Console.ForegroundColor = ConsoleColor.DarkGreen;
-            Console.WriteLine(Program.CenterText("Main Menu"));
+            Console.WriteLine(FitnessAppEngine.CenterText("Main Menu"));
             Console.ForegroundColor = ConsoleColor.White;
             Console.WriteLine("1. Profile");
             Console.WriteLine("2. Exercises");
@@ -196,13 +181,8 @@ namespace Mini_Fitness_Tracker.Ui
             string exerciseName = Validation.ValiDataExerciseName(Console.ReadLine(), exerciseOption, 30, 0, 0, 2);
             Console.SetCursorPosition(30, 1);
             int duration = Validation.ValidataInputOption(1, 300, 30, 1, 0, 2);
-            //******************************************************************************
-            //double caloriesBurned = CalculateExercisesCalories(exerciseOption, duration);
-            //Console.WriteLine($"Calories ti be Burned:{caloriesBurned}");
-            //******************************************************************************
-
-
-
+            double caloriesBurned = FitnessAppEngine.CalculateExercisesCalories(exerciseName, exerciseOption, duration);
+            Console.WriteLine($"Calories ti be Burned:{caloriesBurned}");
         }
 
         public static int WorkoutPlanOptionMenu()

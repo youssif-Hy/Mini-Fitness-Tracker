@@ -6,53 +6,53 @@ using System.Threading.Tasks;
 
 namespace Mini_Fitness_Tracker.Models
 {
-    public class User
+    public  class User
     {
-        private string name;
-        private int age;
-        private double weight;
-        private double height;
-        private double bmi;
-        private string username;
-        private string password;
+        private static string name;
+        private static int age;
+        private static double weight;
+        private static double height;
+        private static double bmi;
+        private static string username;
+        private static string password;
 
 
-        public string Name
+        public static string Name
         {
             get { return name; }
             set { name = value; }
         }
-        public int Age
+        public static int Age
         {
             get { return age; }
             set { age = value; }
         }
 
 
-        public double Weight
+        public static double Weight
         {
             get { return weight; }
             set { weight = value; }
 
         }
 
-        public double Height
+        public static double Height
         {
             get { return height; }
             set { height = value; }
         }
 
-        public string Username
+        public static string Username
         {
             get { return username; }
             set { username = value; }
         }
-        public string Password
+        public static string Password
         {
             get { return password; }
             set { password = value; }
         }
-        public double CalculateBmi()
+        public static double CalculateBmi()
         {
             return weight / (height * height);
         }
@@ -61,10 +61,10 @@ namespace Mini_Fitness_Tracker.Models
 
         public User(string name, int age, double weight, double height)
         {
-            this.name = name;
-            this.age = age;
-            this.weight = weight;
-            this.height = height;
+            Name = name;
+            Age = age;
+            Weight = weight;
+            Height = height;
         }
 
 
@@ -107,10 +107,10 @@ namespace Mini_Fitness_Tracker.Models
 
         public void UpdateProfile(string name, int age, double weight, double height)
         {
-            this.name = name;
-            this.age = age;
-            this.weight = weight;
-            this.height = height;
+            Name = name;
+            Age = age;
+            Weight = weight;
+            Height = height;
         }
 
 
