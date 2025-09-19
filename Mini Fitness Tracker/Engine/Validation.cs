@@ -9,7 +9,7 @@ using static Mini_Fitness_Tracker.Ui.ConsoleUI;
 
 namespace Mini_Fitness_Tracker.Engine
 {
-    public class Validation
+    public static class Validation
     {
         //دالة ValidateInput تقوم بالتحقق من صحة الإدخال المدخل من قبل المستخدم
         public static int ValidataInput(string input, int xAxis, int yAxis, int xAxis1, int yAxis1)
@@ -47,7 +47,7 @@ namespace Mini_Fitness_Tracker.Engine
                 // تعيين موضع المؤشر في الشاشة
                 Console.SetCursorPosition(xAxis, yAxis);
                 // قراءة إدخال المستخدم والتحقق من صحته
-                option = Validation.ValidataInput(Console.ReadLine(), xAxis, yAxis, xAxis1, yAxis1);
+                option = ValidataInput(Console.ReadLine(), xAxis, yAxis, xAxis1, yAxis1);
                 // إذا كان الخيار غير صحيح، عرض رسالة الخطأ
                 if (option >= minOption && option <= maxOption)
                 {
@@ -261,6 +261,84 @@ namespace Mini_Fitness_Tracker.Engine
                     Console.ForegroundColor = ConsoleColor.White;
                     Console.SetCursorPosition(xaxis, yaxis);
                     Age = Console.ReadLine();
+                }
+            }
+        }
+        public static string ValidataHeight(string height , int xaxis, int yaxis, int xaxis1, int yaxis1)
+        {
+            while (true)
+            {
+                string title = "Invalid height, Please enter a valid height , try again. ";
+                double Height;
+                // محاولة تحليل التاريخ المدخل إلى كائن DateTime
+                if (double.TryParse(height, out Height))
+                {
+
+                    if (Height > 70 && Height < 300)
+                    {
+                        Space(title, xaxis1, yaxis1);
+                        return height;
+                    }
+                    // إذا كان الطول اقل من 70 سنتي متر او اكبر من 3 متر يطلب منه ادخال قيمة صحيحة
+                    else
+                    {
+                        Console.ForegroundColor = ConsoleColor.DarkRed;
+                        Console.SetCursorPosition(xaxis1, yaxis1);
+                        Console.Write(title);
+                        Space(height, xaxis, yaxis);
+                        Console.ForegroundColor = ConsoleColor.White;
+                        Console.SetCursorPosition(xaxis, yaxis);
+                        height = Console.ReadLine();
+                    }
+                }
+                else
+                {
+                    Console.ForegroundColor = ConsoleColor.DarkRed;
+                    Console.SetCursorPosition(xaxis1, yaxis1);
+                    Console.Write(title);
+                    Space(height, xaxis, yaxis);
+                    Console.ForegroundColor = ConsoleColor.White;
+                    Console.SetCursorPosition(xaxis, yaxis);
+                    height = Console.ReadLine();
+                }
+            }
+        }
+        public static string ValidataWeight(string weight, int xaxis, int yaxis, int xaxis1, int yaxis1)
+        {
+            while (true)
+            {
+                string title = "Invalid Weight, Please enter a valid Weight , try again. ";
+                double Weight;
+                // محاولة تحليل التاريخ المدخل إلى كائن DateTime
+                if (double.TryParse(weight, out Weight))
+                {
+
+                    if (Weight > 50 && Weight < 300)
+                    {
+                        Space(title, xaxis1, yaxis1);
+                        return weight;
+                    }
+                    // إذا كان الوزن اقل من 15 كجم او اكبر من 300 كجم يطلب منه اعادة مرة اخرى
+                    else
+                    {
+                        Console.ForegroundColor = ConsoleColor.DarkRed;
+                        Console.SetCursorPosition(xaxis1, yaxis1);
+                        Console.Write(title);
+                        Space(weight, xaxis, yaxis);
+                        Console.ForegroundColor = ConsoleColor.White;
+                        Console.SetCursorPosition(xaxis, yaxis);
+                        weight = Console.ReadLine();
+                    }
+                }
+                else
+                {
+                    Console.ForegroundColor = ConsoleColor.DarkRed;
+                    Console.SetCursorPosition(xaxis1, yaxis1);
+                    Console.Write(title);
+                    Space(weight, xaxis, yaxis);
+                    Console.ForegroundColor = ConsoleColor.White;
+                    Console.SetCursorPosition(xaxis, yaxis);
+                    weight = Console.ReadLine();
                 }
             }
         }
