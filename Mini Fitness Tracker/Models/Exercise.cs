@@ -12,6 +12,13 @@ namespace Mini_Fitness_Tracker.Models
         private string type; // e.g., Cardio, Strength, Yoga
         private double caloriesBurnedPermin; // calories burned per minute
 
+
+
+
+
+
+
+
         public Exercise(string name, string type, double caloriesBurnedPerMin)
         {
             this.name = name;
