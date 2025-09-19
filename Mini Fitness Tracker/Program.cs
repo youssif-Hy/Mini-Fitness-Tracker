@@ -101,7 +101,7 @@ namespace Mini_Fitness_Tracker
         public static void SwitchProfile()
         {
             //profile method
-            switch()
+            switch ()
             {
                 case 1:
                     // *****************************************************************************

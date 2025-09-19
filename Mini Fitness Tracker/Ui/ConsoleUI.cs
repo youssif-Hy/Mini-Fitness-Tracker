@@ -27,7 +27,7 @@ namespace Mini_Fitness_Tracker.Ui
             Console.WriteLine(Program.CenterText("░░░██║░░░██║░░██║██║░░██║╚█████╔╝██║░╚██╗███████╗██║░░██║"));
             Console.WriteLine(Program.CenterText("░░░╚═╝░░░╚═╝░░╚═╝╚═╝░░╚═╝░╚════╝░╚═╝░░╚═╝╚══════╝╚═╝░░╚═╝"));
             Console.ForegroundColor = ConsoleColor.DarkGreen;
-            Console.WriteLine(Program.CenterText("Welcome to the Mini Fitness Tracker!"));
+            Console.WriteLine(Program.CenterText("Welcome to the Mini Fitness Tracker🏋️!"));
             Console.ForegroundColor = ConsoleColor.DarkGray;
             Console.Write(Program.CenterText("Press any key to continue..."));
             Console.ReadKey();
@@ -39,40 +39,16 @@ namespace Mini_Fitness_Tracker.Ui
         {
             Console.Clear();
             Console.ForegroundColor = ConsoleColor.DarkGreen;
-            Console.WriteLine(Program.CenterText("Welcome to the Mini Fitness Tracker!"));
+            Console.WriteLine(Program.CenterText("Welcome to the Mini Fitness Tracker🏋️!"));
             Console.ForegroundColor = ConsoleColor.White;
             Console.WriteLine("1. Log In");
             Console.WriteLine("2. Register");
-            Console.WriteLine("3. Exit");
+            Console.WriteLine("0. Exit");
             Console.ForegroundColor = ConsoleColor.DarkGray;
-            Console.Write("Enter your choice (1-3): ");
+            Console.Write("Enter your choice (0-2):");
             Console.ForegroundColor = ConsoleColor.White;
-            int option;
-            //loop للتأكد من إدخال المستخدم خيار صحيح
-            while (true)
-            {
-                // رسالة خطأ في حالة إدخال غير صحيح
-                string errorMessage = "Invalid input, please enter a number between 1 and 3.";
-                // تعيين موضع المؤشر في الشاشة
-                Console.SetCursorPosition(24, 4);
-                // قراءة إدخال المستخدم والتحقق من صحته
-                option = Validation.ValidataInput(Console.ReadLine(), 24, 4, 0, 5);
-                // إذا كان الخيار غير صحيح، عرض رسالة الخطأ
-                if (option != 1 && option != 2 && option != 3)
-                {
-                    Console.ForegroundColor = ConsoleColor.DarkRed;
-                    WriteSlow(errorMessage, 20, 0, 5);
-                    Console.ForegroundColor = ConsoleColor.White;
-                    Space(option.ToString(), 24, 4);
-                }
-                // إذا كان الإدخال صحيحًا، الخروج من الحلقة
-                else
-                {
-                    Console.ForegroundColor = ConsoleColor.White;
-                    Space(errorMessage, 0, 5);
-                    break;
-                }
-            }
+            int option = Validation.ValidataInputOption( 0, 2, 24, 4, 0, 5);
+
             return option;
         }
         // دالة LogIn تقوم بعرض واجهة تسجيل الدخول للمستخدم
@@ -178,40 +154,71 @@ namespace Mini_Fitness_Tracker.Ui
             Console.WriteLine("2. Exercises");
             Console.WriteLine("3. Workout Plan");
             Console.WriteLine("4. Progress");
-            Console.WriteLine("5. Logout");
+            Console.WriteLine("0. Exit");
             Console.ForegroundColor = ConsoleColor.DarkGray;
-            Console.Write("Enter your choice (1-5): ");
+            Console.Write("Enter your choice (0-4):");
             Console.ForegroundColor = ConsoleColor.White;
-            int option;
-            //loop للتأكد من إدخال المستخدم خيار صحيح
-            while (true)
-            {
-                // رسالة خطأ في حالة إدخال غير صحيح
-                string errorMessage = "Invalid input, please enter a number between 1 and 3.";
-                // تعيين موضع المؤشر في الشاشة
-                Console.SetCursorPosition(24, 4);
-                // قراءة إدخال المستخدم والتحقق من صحته
-                option = Validation.ValidataInput(Console.ReadLine(), 24, 4, 0, 5);
-                // إذا كان الخيار غير صحيح، عرض رسالة الخطأ
-                if (option < 1 && option > 5)
-                {
-                    Console.ForegroundColor = ConsoleColor.DarkRed;
-                    WriteSlow(errorMessage, 20, 0, 5);
-                    Console.ForegroundColor = ConsoleColor.White;
-                    Space(option.ToString(), 24, 4);
-                }
-                // إذا كان الإدخال صحيحًا، الخروج من الحلقة
-                else
-                {
-                    Console.ForegroundColor = ConsoleColor.White;
-                    Space(errorMessage, 0, 5);
-                    break;
-                }
-            }
+            int option = Validation.ValidataInputOption(0, 4, 24, 6, 0, 7);
+
             return option;
         }
+        public static int ProfileOptionMenu()
+        {
+            Console.Clear();
+            Console.WriteLine("1. View Profile");
+            Console.WriteLine("2. Edit Profile");
+            Console.WriteLine("3. Back to Main Menu");
+            Console.WriteLine("0. Exit");
+            Console.ForegroundColor = ConsoleColor.DarkGray;
+            Console.Write("Enter your choice (0-3):");
+            Console.ForegroundColor = ConsoleColor.White;
+            int option = Validation.ValidataInputOption(0, 3, 24, 4, 0, 5);
+            return option;
+        }
+        public static int ExercisesOptionMenu()
+        {
+            Console.Clear();
+            Console.WriteLine("1. Cardio (e.g., Running, Jump Rope)");
+            Console.WriteLine("2. Strength (e.g., Squats, Push-ups)");
+            Console.WriteLine("3. Yoga (Flexibility/Balance)");
+            Console.WriteLine("4. Back to Main Menu");
+            Console.WriteLine("0. Exit");
+            Console.ForegroundColor = ConsoleColor.DarkGray;
+            Console.WriteLine("Enter your choice (0-4):");
+            Console.ForegroundColor = ConsoleColor.White;
+            int option = Validation.ValidataInputOption(0, 4, 24, 5, 0, 6);
+            return option;
+        }
+        public static void CalculateExercisesCalories(int exerciseOption)
+        {
+            Console.Clear();
+            Console.WriteLine("Enter exercise name:");
+            Console.WriteLine("Enter duration (minutes):");
+            Console.SetCursorPosition(30, 0);
+            string exerciseName = Validation.ValiDataExerciseName(Console.ReadLine(), exerciseOption, 30, 0, 0, 2);
+            Console.SetCursorPosition(30, 1);
+            int duration = Validation.ValidataInputOption(1, 300, 30, 1, 0, 2);
+            //******************************************************************************
+            //double caloriesBurned = CalculateExercisesCalories(exerciseOption, duration);
+            //Console.WriteLine($"Calories ti be Burned:{caloriesBurned}");
+            //******************************************************************************
 
 
+
+        }
+
+        public static int WorkoutPlanOptionMenu()
+        {
+            Console.Clear();
+            Console.WriteLine("1. View Today's Workout Plan");
+            Console.WriteLine("2. Back to Main Menu");
+            Console.WriteLine("0. Exit");
+            Console.ForegroundColor = ConsoleColor.DarkGray;
+            Console.Write("Enter your choice (0-2):");
+            Console.ForegroundColor = ConsoleColor.White;
+            int option = Validation.ValidataInputOption(0, 2, 24, 4, 0, 5);
+            return option;
+        }
 
 
 
