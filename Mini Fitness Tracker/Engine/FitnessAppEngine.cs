@@ -22,15 +22,10 @@ namespace Mini_Fitness_Tracker.Engine
                 switch (userOption)
                 {
                     case 1: // Login
-                        ConsoleUI.LogIn();
-                        //After Compeat LogIn method
-                        /************************************************************************************
                         if (!ConsoleUI.LogIn())
                         {
                             ConsoleUI.DisplayMenu();
                         }
-                        ************************************************************************************
-                        */
                         break;
 
                     case 2: // Register
@@ -77,11 +72,11 @@ namespace Mini_Fitness_Tracker.Engine
             int mainMenuChoice = ConsoleUI.mainMenu();
             switch (mainMenuChoice)
             {
-                case 1: // Profile
+                case 1: // Profile    \/
                     SwitchProfile();
                     break;
                 case 2:
-                    ConsoleUI.ExercisesOptionMenu();
+                    SwitchExerciseOption();
                     break;
                 case 3: // Workout Plan
                         // Handle workout plan
@@ -100,6 +95,29 @@ namespace Mini_Fitness_Tracker.Engine
             }
 
         }
+        public static void SwitchExerciseOption()
+        {
+            int option = ConsoleUI.ExercisesOptionMenu();
+            switch (option)
+            {
+                case 1:
+                case 2:
+                case 3:
+                    ConsoleUI.CalculateExercisesCalories(option);
+                    break;
+                case 4:
+                    SwitchMenu();
+                    break;
+                case 0:
+                    Environment.Exit(0);
+                    break;
+            }
+        }
+
+
+
+
+
         public static void SwitchProfile()
         {
 
@@ -108,12 +126,12 @@ namespace Mini_Fitness_Tracker.Engine
             {
                 case 1:
                     // *****************************************************************************
-                    //view()
+                    //view();
                     // *****************************************************************************
                     break;
                 case 2:
                     // *****************************************************************************
-                    //edit
+                    //edit();
                     // *****************************************************************************
                     break;
                 case 3:
@@ -149,9 +167,9 @@ namespace Mini_Fitness_Tracker.Engine
                     break;
             }
 
-            double claloriesBurnedPerMen = (METs * 3.5 * weight) / 200.0;
+            double caloriesBurnedPerMin = (METs * 3.5 * weight) / 200.0;
 
-            return claloriesBurnedPerMen * duration;
+            return caloriesBurnedPerMin * duration;
 
         }
         public static double switchOptionCardio(string exerciseName)

@@ -59,8 +59,10 @@ namespace Mini_Fitness_Tracker.Models
 
 
 
-        public User(string name, int age, double weight, double height)
+        public User(string username , string password,string name, int age, double weight, double height)
         {
+            Username = username;
+            Password = password;
             Name = name;
             Age = age;
             Weight = weight;

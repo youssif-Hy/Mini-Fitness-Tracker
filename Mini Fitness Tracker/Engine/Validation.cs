@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
+using Mini_Fitness_Tracker.Utils;
 using System.Threading.Tasks;
 using static Mini_Fitness_Tracker.Ui.ConsoleUI;
 
@@ -122,18 +123,14 @@ namespace Mini_Fitness_Tracker.Engine
 
             while (true)
             {
-                if (username.Length >= 5 && !username.Contains(" ") && !username.All(char.IsDigit) && !username.All(char.IsLetter))
+                if (username.Length >= 5 && !username.Contains(" "))
                 {
                     Space(title, xaxis1, yaxis1);
                     string title1 = "Username already exists, Please enter a different username, try again. ";
-                    // التحقق من وجود اسم المستخدم في بيانات المستخدمين
-                    //*********************************************************************************************************************************************
-                    // هنا عايزك تبقى تغير الكود ده وتخليه يشيك على اسم المستخدم في الداتا ويشوفه لو موجود يرجعلي اسم مستخدم تاني لو مش موجود يرجعلي اسم المستخدم
-                    if (username != username/* UserName from data */ )
+                    if (!DataHandler.CheckIfUsernameExists(username))
                     {
                         return username;
                     }
-                    //*********************************************************************************************************************************************
                     else
                     {
                         Console.ForegroundColor = ConsoleColor.DarkRed;
@@ -158,6 +155,10 @@ namespace Mini_Fitness_Tracker.Engine
                 }
             }
         }
+
+
+
+
         // دالة ValiDataName تقوم بالتحقق من صحة الاسم المدخل
         public static string ValiDataName(string name, int xaxis, int yaxis, int xaxis1, int yaxis1)
         {
