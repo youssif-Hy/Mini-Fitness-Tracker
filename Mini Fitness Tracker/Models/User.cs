@@ -13,6 +13,8 @@ namespace Mini_Fitness_Tracker.Models
         private double weight;
         private double height;
         private double bmi;
+        private string username;
+        private string password;
 
 
         public string Name
@@ -25,6 +27,7 @@ namespace Mini_Fitness_Tracker.Models
             get { return age; }
             set { age = value; }
         }
+
 
         public double Weight
         {
@@ -39,6 +42,16 @@ namespace Mini_Fitness_Tracker.Models
             set { height = value; }
         }
 
+        public string Username
+        {
+            get { return username; }
+            set { username = value; }
+        }
+        public string Password
+        {
+            get { return password; }
+            set { password = value; }
+        }
         public double CalculateBmi()
         {
             return weight / (height * height);
@@ -53,6 +66,7 @@ namespace Mini_Fitness_Tracker.Models
             this.weight = weight;
             this.height = height;
         }
+
 
 
 

@@ -6,6 +6,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using Mini_Fitness_Tracker;
 using Mini_Fitness_Tracker.Engine;
+using Mini_Fitness_Tracker.Utils;
 
 namespace Mini_Fitness_Tracker.Ui
 {
@@ -52,7 +53,7 @@ namespace Mini_Fitness_Tracker.Ui
             return option;
         }
         // دالة LogIn تقوم بعرض واجهة تسجيل الدخول للمستخدم
-        public static void LogIn()
+        public static bool LogIn()
         {
             Console.Clear();
             Console.ForegroundColor = ConsoleColor.Cyan;
@@ -71,25 +72,22 @@ namespace Mini_Fitness_Tracker.Ui
             string user_name = Console.ReadLine();
             Console.SetCursorPosition(59, 5); // اعادة تعيين موضع المؤشر لكلمة المرور
             string password = Console.ReadLine();
-            //*************************************************************************************
-            // Ahmed mo (Engine)
-            // bool isValidUser = FitnessAppEngine.Login(user_name, password);
-            //*************************************************************************************
-            // if (isValidUser)
-            // {
-            //    Console.WriteLine(Program.CenterText("Login successful!"));
-            //    Console.WriteLine(Program.CenterText("Press any key to continue..."));
-            //    Console.ReadKey();
-            //    console.Clear();
-            // }
-            // else
-            // {
-            //    Console.WriteLine(Program.CenterText("Invalid username or password. Please try again."));
-            //    Console.WriteLine(Program.CenterText("Press any key to continue..."));
-            //    Console.ReadKey();
-            //    console.Clear();
-            // }
-            // return isValidUser;
+            bool isValidUser = DataHandler.CheckLogin(user_name, password);
+            if (isValidUser)
+            {
+                Console.WriteLine(Program.CenterText("Login successful!"));
+                Console.WriteLine(Program.CenterText("Press any key to continue..."));
+                Console.ReadKey();
+                Console.Clear();
+            }
+            else
+            {
+                Console.WriteLine(Program.CenterText("Invalid username or password. Please try again."));
+                Console.WriteLine(Program.CenterText("Press any key to continue..."));
+                Console.ReadKey();
+                Console.Clear();
+            }
+            return isValidUser;
         }
         // دالة Register تقوم بعرض واجهة تسجيل مستخدم جديد
         public static void Register()
@@ -119,25 +117,25 @@ namespace Mini_Fitness_Tracker.Ui
             string name = Validation.ValiDataName(Console.ReadLine(), 42, 5, 0, 14);
             Console.SetCursorPosition(42, 6);
             string Age = Validation.ValiDataAge(Console.ReadLine(), 42, 6, 0, 14);
-            Console.SetCursorPosition(42, 7);
+            //Console.SetCursorPosition(42, 7);
 
             //******************************************************************************
             // Ahmed mo (Engine)
             // يا احمد عايزك نعمل دالة في محرك التطبيق اسمها ValidataHeight بنفس الطريقة اللي عملتها في باقي ميثودز التحقق
-            // string Height = Vaidation.ValidataHeight(Console.ReadLine(), 42, 7, 0, 14);
+            string Height = "0";// Vaidation.ValidataHeight(Console.ReadLine(), 42, 7, 0, 14);
             //******************************************************************************
 
-            Console.SetCursorPosition(42, 8);
+            //Console.SetCursorPosition(42, 8);
             //******************************************************************************
             // Ahmed mo (Engine)
             // يا احمد عايزك نعمل دالة في محرك التطبيق اسمها ValidataWeight بنفس الطريقة اللي عملتها في باقي ميثودز التحقق
-            // string Weight = Vaidation.ValidataWeight(Console.ReadLine(), 42, 8, 0, 14);
+            string Weight = "0";// Vaidation.ValidataWeight(Console.ReadLine(), 42, 8, 0, 14);
             //******************************************************************************
 
             //***********************************************************************************************************************
             // هو انا مش عارف هي الميثود دي المفروض مين اللي بيعملها المهم اللي هيعمبها يبقى يعملها ويشيل الكومنتات
             // هنا عازك نعمل ميثود في محرك التطبيق اسمها Register بتاخد البراميترز دي عشان تسجل المستخدم
-            // FitnessAppEngine.Register(username, password, name, int.Parse(Age) , double.Parse(Height), double.Parse(Weight));
+             DataHandler.Register(username, password, name, int.Parse(Age) , double.Parse(Height), double.Parse(Weight));
             //***********************************************************************************************************************
             Console.WriteLine(Program.CenterText("Registration successful!"));
             Console.WriteLine(Program.CenterText("Press any key to continue..."));
