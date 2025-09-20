@@ -10,6 +10,7 @@ namespace Mini_Fitness_Tracker
 {
     internal class Program
     {
+
         static void Main()
         {
             Console.OutputEncoding = System.Text.Encoding.UTF8;
