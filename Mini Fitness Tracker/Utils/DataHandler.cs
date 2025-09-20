@@ -1,11 +1,13 @@
-﻿using Mini_Fitness_Tracker.Models;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.IO.Ports;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web;
 using System.Xml.Linq;
+using Mini_Fitness_Tracker.Models;
 using Mini_Fitness_Tracker.Ui;
 
 namespace Mini_Fitness_Tracker.Utils
@@ -16,9 +18,11 @@ namespace Mini_Fitness_Tracker.Utils
         public static void Register(string username, string password, string name, int age, double height, double weight)
         {
             string lines = $"{username},{password},{name},{age},{height},{weight}";
+            string[] parts = lines.Split(','); 
+            User user = new User(parts[0], parts[1], parts[2], int.Parse(parts[3]), double.Parse(parts[4]), double.Parse(parts[5]));
             if (File.Exists(UserDataFile))
             {
-                File.AppendAllText(UserDataFile, Environment.NewLine + lines);
+                File.AppendAllText(UserDataFile, Environment.NewLine +lines);
             }
             else
             {
@@ -66,19 +70,27 @@ namespace Mini_Fitness_Tracker.Utils
         }
         public static void EditName(string newname)
         {
-
             string[] lines = File.ReadAllLines(UserDataFile);
-            foreach (string line in lines)
+            List<string> updatedLines = lines.ToList();
+
+            for (int i = 0; i < updatedLines.Count; i++)
             {
-                string[] parts = line.Split(',');
-                if (parts[0] == User.Username)
+                string[] parts = updatedLines[i].Split(',');
+
+                if (parts[0] == User.Username) // لو ده المستخدم اللي عايز اعدل بياناته
                 {
-                    parts[2] = newname;
-                    User.Name = newname;
+                    parts[2] = newname;        // عدّل العمود اللي فيه الاسم
+                    User.Name = newname;       // حدّث الكائن كمان
+
+                    // خزّن السطر المعدّل في نفس المكان (overwrite مش Add)
+                    updatedLines[i] = string.Join(",", parts);
                 }
             }
-            File.WriteAllLines(UserDataFile, lines); // كتابة التغييرات إلى الملف
+
+            // اكتب كل السطور المعدلة مرة واحدة
+            File.WriteAllLines(UserDataFile, updatedLines);
         }
+
         public static void EditAge(int newage)
         {
             string[] lines = File.ReadAllLines(UserDataFile);
@@ -122,10 +134,10 @@ namespace Mini_Fitness_Tracker.Utils
             File.WriteAllLines(UserDataFile, lines);
         }
 
-       public static void addworkoutplan(string exerciseName, double caloriesBurned,int duration)
+        public static void AddWorkOutPlan(string exerciseName, double caloriesBurned, int duration)
         {
             string workoutplanfile = $"{User.Username}_workoutplans.txt";
-            string lines = $"{exerciseName},{caloriesBurned},{duration}";
+            string lines = $"{DateTime.Today.ToString("d")},{exerciseName},{caloriesBurned},{duration}";
             if (File.Exists(workoutplanfile))
             {
                 File.AppendAllText(workoutplanfile, Environment.NewLine + lines);
@@ -135,7 +147,7 @@ namespace Mini_Fitness_Tracker.Utils
                 File.WriteAllText(workoutplanfile, lines);
             }
         }
-    public static bool viewworkoutplans()
+        public static bool ViewWorkOutPlans()
         {
             string workoutplanfile = $"{User.Username}_workoutplans.txt";
             if (File.Exists(workoutplanfile)) // التحقق من وجود ملف بيانات المستخدمين
@@ -153,6 +165,24 @@ namespace Mini_Fitness_Tracker.Utils
             {
                 return false;
             }
+        }
+        public static bool CheckWorkOutPlanToday()
+        {
+            string workoutplanfile = $"{User.Username}_workoutplans.txt";
+            if (File.Exists(workoutplanfile)) // التحقق من وجود ملف بيانات المستخدمين
+            {
+                string[] lines = File.ReadAllLines(workoutplanfile);// قراءة جميع الأسطر من الملف
+                foreach (string line in lines)
+                {
+                    // تقسيم السطر الى جزاء باتخدام الفاصلة كفاصل
+                    string[] parts = line.Split(',');
+                    if (parts[0] == DateTime.Today.ToString("d"))
+                    {
+                        return true;
+                    }
+                }
+            }
+            return false;
         }
     }
 }

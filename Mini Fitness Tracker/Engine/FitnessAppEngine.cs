@@ -81,7 +81,7 @@ namespace Mini_Fitness_Tracker.Engine
                     SwitchExerciseOption();
                     break;
                 case 3: // Workout Plan
-                        // Handle workout plan
+                    SwitchWorkOutPlan();
                     break;
                 case 4: // Progress
                         // Handle progress tracking
@@ -98,7 +98,7 @@ namespace Mini_Fitness_Tracker.Engine
                     Console.Clear();
                     break;
             }
-
+            SwitchMenu();
         }
         public static void SwitchExerciseOption()
         {
@@ -117,8 +117,25 @@ namespace Mini_Fitness_Tracker.Engine
                     Environment.Exit(0);
                     break;
             }
+            SwitchExerciseOption();
         }
-
+        public static void SwitchWorkOutPlan()
+        {
+            int option = ConsoleUI.WorkoutPlanOptionMenu();
+            switch (option)
+            {
+                case 1:
+                    ConsoleUI.ViewWorkoutPlan();
+                    break;
+                case 2:
+                    SwitchMenu();
+                    break;
+                case 3:
+                    Environment.Exit(0);
+                    break;
+            }
+            SwitchWorkOutPlan();
+        }
 
 
 
@@ -147,7 +164,7 @@ namespace Mini_Fitness_Tracker.Engine
                     Console.Clear();
                     break;
             }
-
+            SwitchProfile();
 
         }
 
