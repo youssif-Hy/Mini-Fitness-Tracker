@@ -18,7 +18,7 @@ namespace Mini_Fitness_Tracker.Utils
             string lines = $"{username},{password},{name},{age},{height},{weight}";
             if(File.Exists(UserDataFile))
             {
-                File.AppendAllText(UserDataFile, lines);
+                File.AppendAllText(UserDataFile,Environment.NewLine+lines);
             }
             else
             {

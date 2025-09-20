@@ -6,6 +6,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using Mini_Fitness_Tracker;
 using Mini_Fitness_Tracker.Engine;
+using Mini_Fitness_Tracker.Models;
 using Mini_Fitness_Tracker.Utils;
 
 namespace Mini_Fitness_Tracker.Ui
@@ -75,15 +76,20 @@ namespace Mini_Fitness_Tracker.Ui
             bool isValidUser = DataHandler.CheckLogin(user_name, password);
             if (isValidUser)
             {
+                Console.SetCursorPosition(0, 9);
+                Console.ForegroundColor = ConsoleColor.Green;
                 Console.WriteLine(FitnessAppEngine.CenterText("Login successful!"));
-                Console.WriteLine(FitnessAppEngine.CenterText("Press any key to continue..."));
+                Console.ForegroundColor = ConsoleColor.DarkGray;
+                Console.Write(FitnessAppEngine.CenterText("Press any key to continue..."));
+                Console.ResetColor();
                 Console.ReadKey();
                 Console.Clear();
             }
             else
             {
+                Console.SetCursorPosition(0, 9);
                 Console.WriteLine(FitnessAppEngine.CenterText("Invalid username or password. Please try again."));
-                Console.WriteLine(FitnessAppEngine.CenterText("Press any key to continue..."));
+                Console.Write(FitnessAppEngine.CenterText("Press any key to continue..."));
                 Console.ReadKey();
                 Console.Clear();
             }
@@ -122,8 +128,12 @@ namespace Mini_Fitness_Tracker.Ui
             Console.SetCursorPosition(42, 8);
             string Weight =Validation.ValidataWeight(Console.ReadLine(), 42, 8, 0, 14);
             DataHandler.Register(username, password, name, int.Parse(Age) , double.Parse(Height), double.Parse(Weight));
+            Console.SetCursorPosition(0, 13);
+            Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine(FitnessAppEngine.CenterText("Registration successful!"));
+            Console.ForegroundColor = ConsoleColor.DarkGray;
             Console.WriteLine(FitnessAppEngine.CenterText("Press any key to continue..."));
+            Console.ResetColor();
             Console.ReadKey();
             Console.Clear();
         }
@@ -137,11 +147,12 @@ namespace Mini_Fitness_Tracker.Ui
             Console.WriteLine("2. Exercises");
             Console.WriteLine("3. Workout Plan");
             Console.WriteLine("4. Progress");
+            Console.WriteLine("5. LogOut");
             Console.WriteLine("0. Exit");
             Console.ForegroundColor = ConsoleColor.DarkGray;
-            Console.Write("Enter your choice (0-4):");
+            Console.Write("Enter your choice (0-5):");
             Console.ForegroundColor = ConsoleColor.White;
-            int option = Validation.ValidataInputOption(0, 4, 24, 6, 0, 7);
+            int option = Validation.ValidataInputOption(0, 5, 24, 7, 0, 8);
 
             return option;
         }
@@ -177,12 +188,18 @@ namespace Mini_Fitness_Tracker.Ui
             Console.Clear();
             Console.WriteLine("Enter exercise name:");
             Console.WriteLine("Enter duration (minutes):");
-            Console.SetCursorPosition(30, 0);
-            string exerciseName = Validation.ValiDataExerciseName(Console.ReadLine(), exerciseOption, 30, 0, 0, 2);
-            Console.SetCursorPosition(30, 1);
-            int duration = Validation.ValidataInputOption(1, 300, 30, 1, 0, 2);
+            Console.SetCursorPosition(20, 0);
+            string exerciseName = Validation.ValiDataExerciseName(Console.ReadLine(), exerciseOption, 20, 0, 0, 2);
+            Console.SetCursorPosition(25, 1);
+            int duration = Validation.ValidataInputOption(1, 300, 25, 1, 0, 2);
             double caloriesBurned = FitnessAppEngine.CalculateExercisesCalories(exerciseName, exerciseOption, duration);
-            Console.WriteLine($"Calories ti be Burned:{caloriesBurned}");
+            Console.SetCursorPosition(0, 2);
+
+            Console.Write($"Calories to be Burned:");
+            Console.ForegroundColor= ConsoleColor.Cyan;
+            Console.Write(caloriesBurned + " C/M");
+            Console.ResetColor();
+            Console.ReadLine();
         }
 
         public static int WorkoutPlanOptionMenu()
@@ -197,8 +214,6 @@ namespace Mini_Fitness_Tracker.Ui
             int option = Validation.ValidataInputOption(0, 2, 24, 4, 0, 5);
             return option;
         }
-
-
 
 
 
@@ -247,10 +262,21 @@ namespace Mini_Fitness_Tracker.Ui
         //دالة space تقوم بإزالة الكتابة في مكان معين في الشاشة
         public static void Space(string input, int xaise, int yaise)
         {
+            int positionX = xaise;
+            int i = 0;
+            int LengthOfInput = input.Length;
             //loop تلف حول طول الإدخال وتقوم بإزالة الكتابة في المكان المحدد
-            for (int i = 0; i < input.Length; i++)
+
+            while (i < LengthOfInput)
             {
-                int positionX = xaise + i;
+                positionX = xaise + i;
+                if (positionX == Console.BufferWidth)
+                {
+                    LengthOfInput -= i;
+                    i = 0;
+                    yaise++;
+                    positionX = xaise;
+                }
                 // التحقق من أن الموضع لا يتجاوز حدود الشاشة
                 // console.BufferWidth و Console.BufferHeight تعطيان عرض وارتفاع الشاشة
                 if (positionX < Console.BufferWidth && yaise < Console.BufferHeight)
@@ -258,7 +284,9 @@ namespace Mini_Fitness_Tracker.Ui
                     Console.SetCursorPosition(positionX, yaise);
                     Console.Write(" ");
                 }
+                i++;
             }
         }
+
     }
 }
