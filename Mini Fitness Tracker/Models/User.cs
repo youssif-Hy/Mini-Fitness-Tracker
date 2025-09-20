@@ -76,18 +76,14 @@ namespace Mini_Fitness_Tracker.Models
 
 
 
-        // BMI stands for
-        //body mass index and its formula is weight in kg/ height in m^2 
-        // to identify if a person is underweight, normal weight, overweight or obese
-        // BMI < 18.5 = underweight
-        // BMI 18.5 - 24.9 = normal weight
-        // BMI 25 - 29.9 = overweight
-        // BMI >= 30 = obese
-
-
-
-
-
+        // fffBMI stands for
+        //bfffody mass index and its formula is weight in kg/ height in m^2 
+        // fffto identify if a person is underweight, normal weight, overweight or obese
+        // fffBMI < 18.5 = underweight
+        // fffBMI 18.5 - 24.9 = normal weight
+        // fffBMI 25 - 29.9 = overweight
+        // fffBMI >= 30 = obese
+           
         public string GetBmiCategory()
         {
 
