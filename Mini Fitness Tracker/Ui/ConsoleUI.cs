@@ -208,6 +208,7 @@ namespace Mini_Fitness_Tracker.Ui
             Console.Write($"{User.Weight} kg");
             Console.ReadKey();
             Console.Clear();
+            FitnessAppEngine.SwitchProfile();
         }
         public static int EditProfile()
         {
@@ -294,6 +295,7 @@ namespace Mini_Fitness_Tracker.Ui
                     Console.Clear();
                     return option;
                 case 5:
+                    Console.ResetColor();
                     FitnessAppEngine.SwitchProfile();
                     break;
                 case 0:
@@ -314,7 +316,6 @@ namespace Mini_Fitness_Tracker.Ui
             int duration = Validation.ValidataInputOption(1, 300, 25, 1, 0, 2);
             double caloriesBurned = FitnessAppEngine.CalculateExercisesCalories(exerciseName, exerciseOption, duration);
             Console.SetCursorPosition(0, 2);
-
             Console.Write($"Calories to be Burned:");
             Console.ForegroundColor = ConsoleColor.Cyan;
             Console.Write(caloriesBurned + " C/M");
