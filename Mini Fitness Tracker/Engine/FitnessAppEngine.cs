@@ -16,15 +16,15 @@ namespace Mini_Fitness_Tracker.Engine
 
             try
             {
-                ConsoleUI.DisplayWelcomeMessage();
                 int userOption = ConsoleUI.DisplayMenu();
 
                 switch (userOption)
                 {
                     case 1: // Login
+                        //if username exists or invalid username or password will repeat the program
                         if (!ConsoleUI.LogIn())
                         {
-                            ConsoleUI.DisplayMenu();
+                            Run();
                         }
                         break;
 
@@ -47,6 +47,7 @@ namespace Mini_Fitness_Tracker.Engine
                         break;
                 }
 
+
             }
             catch (Exception ex)
             {
@@ -57,6 +58,7 @@ namespace Mini_Fitness_Tracker.Engine
                 Console.ReadKey();
                 Console.Clear();
             }
+        
             SwitchMenu();
         }
         // Center text in console window
@@ -84,8 +86,11 @@ namespace Mini_Fitness_Tracker.Engine
                 case 4: // Progress
                         // Handle progress tracking
                     break;
-                case 5: // Logout
-                    Console.Clear();
+                case 5:
+                    Run();
+                    break;
+                case 0: // Exit
+                    Environment.Exit(0);
                     break;
                 default:
                     Console.WriteLine(CenterText("Invalid option Please try again"));
@@ -166,15 +171,14 @@ namespace Mini_Fitness_Tracker.Engine
                     METs = switchOptionYoga(exerciseName);
                     break;
             }
-
+            
             double caloriesBurnedPerMin = (METs * 3.5 * weight) / 200.0;
-
             return caloriesBurnedPerMin * duration;
 
         }
         public static double switchOptionCardio(string exerciseName)
         {
-            switch(exerciseName)
+            switch(exerciseName.ToLower())
             {
                 case "jump rope":
                 case "running":
@@ -197,7 +201,7 @@ namespace Mini_Fitness_Tracker.Engine
         }
         public static double switchOptionStrength(string exerciseName)
         {
-            switch (exerciseName)
+            switch (exerciseName.ToLower())
             {
                 case "shoulder press":
                 case "squats":
@@ -220,7 +224,7 @@ namespace Mini_Fitness_Tracker.Engine
         }
         public static double switchOptionYoga(string exerciseName)
         {
-            switch (exerciseName)
+            switch (exerciseName.ToLower())
             {
                 case "tai chi":
                 case "yoga":

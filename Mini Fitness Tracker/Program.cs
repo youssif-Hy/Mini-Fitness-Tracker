@@ -14,8 +14,10 @@ namespace Mini_Fitness_Tracker
     {
         static void Main()
         {
+            ConsoleUI.DisplayWelcomeMessage();
             while (true)
             {
+                
                 FitnessAppEngine.Run();
             }
 

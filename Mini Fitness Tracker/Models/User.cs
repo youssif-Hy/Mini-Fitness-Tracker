@@ -9,7 +9,7 @@ namespace Mini_Fitness_Tracker.Models
     public  class User
     {
         private static string name;
-        private static int age;
+        private static int age; 
         private static double weight;
         private static double height;
         private static double bmi;
