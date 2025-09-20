@@ -183,6 +183,126 @@ namespace Mini_Fitness_Tracker.Ui
             int option = Validation.ValidataInputOption(0, 4, 24, 5, 0, 6);
             return option;
         }
+        public static void ViewProfile()
+        {
+            Console.Clear();
+            Console.ForegroundColor = ConsoleColor.Blue;
+            Console.WriteLine(FitnessAppEngine.CenterText("+------------------------------------------------+"));
+            Console.WriteLine(FitnessAppEngine.CenterText(" |                 🪪Your Profile🪪               |"));
+            Console.WriteLine(FitnessAppEngine.CenterText("+------------------------------------------------+"));
+            Console.WriteLine(FitnessAppEngine.CenterText(" | Name    :                                      |"));
+            Console.WriteLine(FitnessAppEngine.CenterText(" | Age     :                                      |"));
+            Console.WriteLine(FitnessAppEngine.CenterText(" | Height  :                                      |"));
+            Console.WriteLine(FitnessAppEngine.CenterText(" | Weight  :                                      |"));
+            Console.WriteLine(FitnessAppEngine.CenterText("+------------------------------------------------+"));
+            Console.WriteLine(FitnessAppEngine.CenterText("|     Press any key to Back to profile menu 📄   |"));
+            Console.WriteLine(FitnessAppEngine.CenterText("+------------------------------------------------+"));
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.SetCursorPosition(46, 3);
+            Console.Write($"{User.Name}");
+            Console.SetCursorPosition(46, 4);
+            Console.Write($"{User.Age}");
+            Console.SetCursorPosition(46, 5);
+            Console.Write($"{User.Height} CM");
+            Console.SetCursorPosition(46, 6);
+            Console.Write($"{User.Weight} kg");
+            Console.ReadKey();
+            Console.Clear();
+        }
+        public static int EditProfile()
+        {
+            Console.Clear();
+            Console.WriteLine("1. Edit Name");
+            Console.WriteLine("2. Edit Age");
+            Console.WriteLine("3. Edit Height");
+            Console.WriteLine("4. Edit Weight");
+            Console.WriteLine("5. Back to Profile Menu");
+            Console.WriteLine("0. Exit");
+            Console.ForegroundColor = ConsoleColor.DarkGray;
+            Console.Write("Enter your choice (0-5):");
+            Console.ForegroundColor = ConsoleColor.White;
+            int option = Validation.ValidataInputOption(0, 5, 24, 6, 0, 7);
+            Console.Clear();
+            Console.ForegroundColor = ConsoleColor.Blue;
+            Console.WriteLine(FitnessAppEngine.CenterText("+------------------------------------------------+"));
+            Console.WriteLine(FitnessAppEngine.CenterText(" |             🪪Edit your profile🪪              |"));
+            Console.WriteLine(FitnessAppEngine.CenterText("+------------------------------------------------+"));
+            switch (option)
+            {
+                case 1:
+                    Console.WriteLine(FitnessAppEngine.CenterText(" | Enter new name   :                             |"));
+                    Console.WriteLine(FitnessAppEngine.CenterText("+------------------------------------------------+"));
+                    Console.ForegroundColor = ConsoleColor.White;
+                    Console.SetCursorPosition(55, 3);
+                    string newName = Validation.ValiDataName(Console.ReadLine(), 55, 3, 0, 5);
+                    User.Name = newName;
+                    Console.ForegroundColor = ConsoleColor.Green;
+                    Console.SetCursorPosition(0, 5);
+                    Console.WriteLine(FitnessAppEngine.CenterText("Profile updated successfully!"));
+                    Console.ForegroundColor = ConsoleColor.DarkGray;
+                    Console.Write(FitnessAppEngine.CenterText("Press any key to continue..."));
+                    Console.ResetColor();
+                    Console.ReadKey();
+                    Console.Clear();
+                    return option;
+                case 2:
+                    Console.WriteLine(FitnessAppEngine.CenterText(" | Enter new age    :                             |"));
+                    Console.WriteLine(FitnessAppEngine.CenterText("+------------------------------------------------+"));
+                    Console.ForegroundColor = ConsoleColor.White;
+                    Console.SetCursorPosition(55, 3);
+                    string newAge = Validation.ValiDataAge(Console.ReadLine(), 55, 3, 0, 5);
+                    User.Age = int.Parse(newAge);
+                    Console.ForegroundColor = ConsoleColor.Green;
+                    Console.SetCursorPosition(0, 5);
+                    Console.WriteLine(FitnessAppEngine.CenterText("Profile updated successfully!"));
+                    Console.ForegroundColor = ConsoleColor.DarkGray;
+                    Console.Write(FitnessAppEngine.CenterText("Press any key to continue..."));
+                    Console.ResetColor();
+                    Console.ReadKey();
+                    Console.Clear();
+                    return option;
+                case 3:
+                    Console.WriteLine(FitnessAppEngine.CenterText(" | Enter new height (CM):                         |"));
+                    Console.WriteLine(FitnessAppEngine.CenterText("+------------------------------------------------+"));
+                    Console.ForegroundColor = ConsoleColor.White;
+                    Console.SetCursorPosition(59, 3);
+                    string newHeight = Validation.ValidataHeight(Console.ReadLine(), 59, 3, 0, 5);
+                    User.Height = double.Parse(newHeight);
+                    Console.ForegroundColor = ConsoleColor.Green;
+                    Console.SetCursorPosition(0, 5);
+                    Console.WriteLine(FitnessAppEngine.CenterText("Profile updated successfully!"));
+                    Console.ForegroundColor = ConsoleColor.DarkGray;
+                    Console.Write(FitnessAppEngine.CenterText("Press any key to continue..."));
+                    Console.ResetColor();
+                    Console.ReadKey();
+                    Console.Clear();
+                    return option;
+                case 4:
+                    Console.WriteLine(FitnessAppEngine.CenterText(" | Enter new weight (Kg):                         |"));
+                    Console.WriteLine(FitnessAppEngine.CenterText("+------------------------------------------------+"));
+                    Console.ForegroundColor = ConsoleColor.White;
+                    Console.SetCursorPosition(59, 3);
+                    string newWeight = Validation.ValidataWeight(Console.ReadLine(), 59, 3, 0, 5);
+                    User.Weight = double.Parse(newWeight);
+                    Console.ForegroundColor = ConsoleColor.Green;
+                    Console.SetCursorPosition(0, 5);
+                    Console.WriteLine(FitnessAppEngine.CenterText("Profile updated successfully!"));
+                    Console.ForegroundColor = ConsoleColor.DarkGray;
+                    Console.Write(FitnessAppEngine.CenterText("Press any key to continue..."));
+                    Console.ResetColor();
+                    Console.ReadKey();
+                    Console.Clear();
+                    return option;
+                case 5:
+                    FitnessAppEngine.SwitchProfile();
+                    break;
+                case 0:
+                    Environment.Exit(0);
+                    break;
+            }
+            return 0;
+           
+        }
         public static void CalculateExercisesCalories(int exerciseOption)
         {
             Console.Clear();
