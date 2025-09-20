@@ -148,6 +148,7 @@ namespace Mini_Fitness_Tracker.Engine
                     break;
             }
 
+
         }
 
         public static double CalculateExercisesCalories(string exerciseName, int exerciseOption, double duration)
