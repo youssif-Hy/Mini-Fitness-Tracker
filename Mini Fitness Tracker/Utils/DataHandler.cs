@@ -122,5 +122,37 @@ namespace Mini_Fitness_Tracker.Utils
             File.WriteAllLines(UserDataFile, lines);
         }
 
+       public static void addworkoutplan(string exerciseName, double caloriesBurned,int duration)
+        {
+            string workoutplanfile = $"{User.Username}_workoutplans.txt";
+            string lines = $"{exerciseName},{caloriesBurned},{duration}";
+            if (File.Exists(workoutplanfile))
+            {
+                File.AppendAllText(workoutplanfile, Environment.NewLine + lines);
+            }
+            else
+            {
+                File.WriteAllText(workoutplanfile, lines);
+            }
+        }
+    public static bool viewworkoutplans()
+        {
+            string workoutplanfile = $"{User.Username}_workoutplans.txt";
+            if (File.Exists(workoutplanfile)) // التحقق من وجود ملف بيانات المستخدمين
+            {
+                string[] lines = File.ReadAllLines(workoutplanfile);// قراءة جميع الأسطر من الملف
+                foreach (string line in lines)
+                {
+                    // تقسيم السطر الى جزاء باتخدام الفاصلة كفاصل
+                    string[] parts = line.Split(',');
+                    Console.WriteLine($"Exercise Name: {parts[0]}, Calories Burned: {parts[1]}, Duration: {parts[2]} minutes");
+                }
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
     }
 }
