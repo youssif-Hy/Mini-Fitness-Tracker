@@ -4,15 +4,16 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
+using Mini_Fitness_Tracker.Utils;
 using System.Threading.Tasks;
 using static Mini_Fitness_Tracker.Ui.ConsoleUI;
 
 namespace Mini_Fitness_Tracker.Engine
 {
-    public class Validation
+    public static class Validation
     {
         //دالة ValidateInput تقوم بالتحقق من صحة الإدخال المدخل من قبل المستخدم
-        public static int ValidataInput(string input, int xaxis, int yaxis, int xaxis1, int yaxis1)
+        public static int ValidataInput(string input, int xAxis, int yAxis, int xAxis1, int yAxis1)
         {
             int value;
             string title = "Invalid input ,try again plese enter valid input";
@@ -21,18 +22,97 @@ namespace Mini_Fitness_Tracker.Engine
                 // التحقق من أن الإدخال هو رقم صحيح
                 if (!int.TryParse(input, out value))
                 {
-                    Space(title, xaxis1, yaxis1);
+                    Space(title, xAxis1, yAxis1);
                     Console.ForegroundColor = ConsoleColor.DarkRed;
-                    WriteSlow(title, 20, xaxis1, yaxis1);
-                    Space(input, xaxis, yaxis);
+                    WriteSlow(title, 20, xAxis1, yAxis1);
+                    Space(input, xAxis, yAxis);
                     Console.ForegroundColor = ConsoleColor.White;
-                    Console.SetCursorPosition(xaxis, yaxis);
+                    Console.SetCursorPosition(xAxis, yAxis);
                     input = Console.ReadLine();
                 }
                 else
                 {
-                    Space(title, xaxis1, yaxis1);
+                    Space(title, xAxis1, yAxis1);
                     return value;
+                }
+            }
+        }
+        public static int ValidataInputOption(int minOption,int maxOption, int xAxis, int yAxis, int xAxis1, int yAxis1)
+        {
+            int option;
+            //loop للتأكد من إدخال المستخدم خيار صحيح
+            while (true)
+            {
+                // رسالة خطأ في حالة إدخال غير صحيح
+                string errorMessage = $"Invalid input, please enter a number between {minOption} and {maxOption}.";
+                // تعيين موضع المؤشر في الشاشة
+                Console.SetCursorPosition(xAxis, yAxis);
+                // قراءة إدخال المستخدم والتحقق من صحته
+                option = ValidataInput(Console.ReadLine(), xAxis, yAxis, xAxis1, yAxis1);
+                // إذا كان الخيار غير صحيح، عرض رسالة الخطأ
+                if (option >= minOption && option <= maxOption)
+                {
+                    Console.ForegroundColor = ConsoleColor.White;
+                    Space(errorMessage, xAxis1, yAxis1);
+                    break;
+
+                }
+                // إذا كان الإدخال صحيحًا، الخروج من الحلقة
+                else
+                {
+                    Console.ForegroundColor = ConsoleColor.DarkRed;
+                    WriteSlow(errorMessage, 20, xAxis1, yAxis1);
+                    Console.ForegroundColor = ConsoleColor.White;
+                    Space(option.ToString(),xAxis, yAxis);
+                }
+            }
+            return option;
+        }
+        // دالة ValiDataExerciseNameForCardio تقوم بالتحقق من صحة اسم التمرين المدخل
+        public static string ValiDataExerciseName(string exerciseName, int exerciseOption, int xaxis, int yaxis, int xaxis1, int yaxis1)
+        {
+            string title;
+            List<string> validExerciseNames;
+            if (exerciseOption == 1)
+            {
+                title = "Invalid Exercise Name, Please enter a valid Exercise Name (ex. Running, Cycling, Swimming, Walking, Jump Rope, Stair Climbing, Dancing, Boxing, Rowing, Basketball, Tennis), try again. ";
+                validExerciseNames = new List<string>
+                {
+                "running", "cycling", "swimming", "walking", "jump rope", "stair climbing", "dancing", "boxing", "rowing", "basketball", "tennis"
+                };
+            }
+            else if(exerciseOption == 2)
+            {
+                title = "Invalid Exercise Name, Please enter a valid Exercise Name (ex. Squats, Lunges, Push-ups, Pull-ups, Deadlifts, Bench Press, plank, Shoulder Press, Bicep Curls, Kettlebell Training), try again. ";
+                validExerciseNames = new List<string>
+                {
+                "squats", "lunges", "push-ups", "pull-ups", "deadlifts", "bench press", "plank", "shoulder press", "bicep curls", "kettlebell training"
+                };
+            }
+            else
+            {
+                title = "Invalid Exercise Name, Please enter a valid Exercise Name (ex. Yoga, Pilates, Stretching, Tai Chi, Dance-based Exercises, Balance Exercises, Mobility Exercises, Foam Rolling), try again. ";
+                validExerciseNames = new List<string>
+                {
+                 "yoga", "pilates", "stretching", "tai chi", "dance-based exercises", "balance exercises", "mobility exercises", "foam rolling"
+                };
+            }
+            while (true)
+            {
+                if (validExerciseNames.Contains(exerciseName.ToLower()))
+                {
+                    Space(title, xaxis1, yaxis1);
+                    return exerciseName;
+                }
+                else
+                {
+                    Console.ForegroundColor = ConsoleColor.DarkRed;
+                    Console.SetCursorPosition(xaxis1, yaxis1);
+                    Console.Write(title);
+                    Space(exerciseName, xaxis, yaxis);
+                    Console.ForegroundColor = ConsoleColor.White;
+                    Console.SetCursorPosition(xaxis, yaxis);
+                    exerciseName = Console.ReadLine();
                 }
             }
         }
@@ -43,18 +123,14 @@ namespace Mini_Fitness_Tracker.Engine
 
             while (true)
             {
-                if (username.Length >= 5 && !username.Contains(" ") && !username.All(char.IsDigit) && !username.All(char.IsLetter))
+                if (username.Length >= 5 && !username.Contains(" "))
                 {
                     Space(title, xaxis1, yaxis1);
                     string title1 = "Username already exists, Please enter a different username, try again. ";
-                    // التحقق من وجود اسم المستخدم في بيانات المستخدمين
-                    //*********************************************************************************************************************************************
-                    // هنا عايزك تبقى تغير الكود ده وتخليه يشيك على اسم المستخدم في الداتا ويشوفه لو موجود يرجعلي اسم مستخدم تاني لو مش موجود يرجعلي اسم المستخدم
-                    if (username != username/* UserName from data */ )
+                    if (!DataHandler.CheckIfUsernameExists(username))
                     {
                         return username;
                     }
-                    //*********************************************************************************************************************************************
                     else
                     {
                         Console.ForegroundColor = ConsoleColor.DarkRed;
@@ -79,6 +155,10 @@ namespace Mini_Fitness_Tracker.Engine
                 }
             }
         }
+
+
+
+
         // دالة ValiDataName تقوم بالتحقق من صحة الاسم المدخل
         public static string ValiDataName(string name, int xaxis, int yaxis, int xaxis1, int yaxis1)
         {
@@ -182,6 +262,84 @@ namespace Mini_Fitness_Tracker.Engine
                     Console.ForegroundColor = ConsoleColor.White;
                     Console.SetCursorPosition(xaxis, yaxis);
                     Age = Console.ReadLine();
+                }
+            }
+        }
+        public static string ValidataHeight(string height , int xaxis, int yaxis, int xaxis1, int yaxis1)
+        {
+            while (true)
+            {
+                string title = "Invalid height, Please enter a valid height , try again. ";
+                double Height;
+                // محاولة تحليل التاريخ المدخل إلى كائن DateTime
+                if (double.TryParse(height, out Height))
+                {
+
+                    if (Height > 70 && Height < 300)
+                    {
+                        Space(title, xaxis1, yaxis1);
+                        return height;
+                    }
+                    // إذا كان الطول اقل من 70 سنتي متر او اكبر من 3 متر يطلب منه ادخال قيمة صحيحة
+                    else
+                    {
+                        Console.ForegroundColor = ConsoleColor.DarkRed;
+                        Console.SetCursorPosition(xaxis1, yaxis1);
+                        Console.Write(title);
+                        Space(height, xaxis, yaxis);
+                        Console.ForegroundColor = ConsoleColor.White;
+                        Console.SetCursorPosition(xaxis, yaxis);
+                        height = Console.ReadLine();
+                    }
+                }
+                else
+                {
+                    Console.ForegroundColor = ConsoleColor.DarkRed;
+                    Console.SetCursorPosition(xaxis1, yaxis1);
+                    Console.Write(title);
+                    Space(height, xaxis, yaxis);
+                    Console.ForegroundColor = ConsoleColor.White;
+                    Console.SetCursorPosition(xaxis, yaxis);
+                    height = Console.ReadLine();
+                }
+            }
+        }
+        public static string ValidataWeight(string weight, int xaxis, int yaxis, int xaxis1, int yaxis1)
+        {
+            while (true)
+            {
+                string title = "Invalid Weight, Please enter a valid Weight , try again. ";
+                double Weight;
+                // محاولة تحليل التاريخ المدخل إلى كائن DateTime
+                if (double.TryParse(weight, out Weight))
+                {
+
+                    if (Weight > 50 && Weight < 300)
+                    {
+                        Space(title, xaxis1, yaxis1);
+                        return weight;
+                    }
+                    // إذا كان الوزن اقل من 15 كجم او اكبر من 300 كجم يطلب منه اعادة مرة اخرى
+                    else
+                    {
+                        Console.ForegroundColor = ConsoleColor.DarkRed;
+                        Console.SetCursorPosition(xaxis1, yaxis1);
+                        Console.Write(title);
+                        Space(weight, xaxis, yaxis);
+                        Console.ForegroundColor = ConsoleColor.White;
+                        Console.SetCursorPosition(xaxis, yaxis);
+                        weight = Console.ReadLine();
+                    }
+                }
+                else
+                {
+                    Console.ForegroundColor = ConsoleColor.DarkRed;
+                    Console.SetCursorPosition(xaxis1, yaxis1);
+                    Console.Write(title);
+                    Space(weight, xaxis, yaxis);
+                    Console.ForegroundColor = ConsoleColor.White;
+                    Console.SetCursorPosition(xaxis, yaxis);
+                    weight = Console.ReadLine();
                 }
             }
         }

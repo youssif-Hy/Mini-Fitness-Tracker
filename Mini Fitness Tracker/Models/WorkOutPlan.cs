@@ -11,11 +11,11 @@ namespace Mini_Fitness_Tracker.Models
     public class WorkoutPlan
     {
 
-        private List<(Exercise Exercise, int Duration)> workoutItems;
+        private static List<(Exercise Exercise, int Duration)> workoutItems;
 
-        private DateTime date;
+        private static DateTime date;
 
-        public DateTime Date
+        public static DateTime Date
         {
             get { return date; }
             set { date = value; }
@@ -24,7 +24,7 @@ namespace Mini_Fitness_Tracker.Models
 
         public WorkoutPlan(DateTime date)
         {
-            this.date = date;
+            Date = date;
             workoutItems = new List<(Exercise, int)>
         {
             // sample data as for format (Exercise(name,type,calories that we burn in a min idk wht the unit of measuring ngl ), duration in minutes)
@@ -40,13 +40,16 @@ namespace Mini_Fitness_Tracker.Models
         };
         }
 
-
+        public static int size
+        {
+            get { return workoutItems.Count; }
+        }
 
 
         //key methids
 
 
-        public void ShowWorkoutPlan()
+        public static void  ShowWorkoutPlan()
         {
             Console.WriteLine("Workout Plan for Date: " + date.ToShortDateString());
             foreach (var item in workoutItems)
