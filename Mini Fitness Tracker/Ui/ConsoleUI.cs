@@ -251,7 +251,7 @@ namespace Mini_Fitness_Tracker.Ui
                     Console.ForegroundColor = ConsoleColor.White;
                     Console.SetCursorPosition(55, 3);
                     string newAge = Validation.ValiDataAge(Console.ReadLine(), 55, 3, 0, 5);
-                    User.Age = int.Parse(newAge);
+                    DataHandler.EditAge(int.Parse(newAge));
                     Console.ForegroundColor = ConsoleColor.Green;
                     Console.SetCursorPosition(0, 5);
                     Console.WriteLine(FitnessAppEngine.CenterText("Profile updated successfully!"));
@@ -267,7 +267,7 @@ namespace Mini_Fitness_Tracker.Ui
                     Console.ForegroundColor = ConsoleColor.White;
                     Console.SetCursorPosition(59, 3);
                     string newHeight = Validation.ValidataHeight(Console.ReadLine(), 59, 3, 0, 5);
-                    User.Height = double.Parse(newHeight);
+                    DataHandler.EditHeight(double.Parse(newHeight));
                     Console.ForegroundColor = ConsoleColor.Green;
                     Console.SetCursorPosition(0, 5);
                     Console.WriteLine(FitnessAppEngine.CenterText("Profile updated successfully!"));
@@ -283,7 +283,7 @@ namespace Mini_Fitness_Tracker.Ui
                     Console.ForegroundColor = ConsoleColor.White;
                     Console.SetCursorPosition(59, 3);
                     string newWeight = Validation.ValidataWeight(Console.ReadLine(), 59, 3, 0, 5);
-                    User.Weight = double.Parse(newWeight);
+                    DataHandler.EditWeight(double.Parse(newWeight));
                     Console.ForegroundColor = ConsoleColor.Green;
                     Console.SetCursorPosition(0, 5);
                     Console.WriteLine(FitnessAppEngine.CenterText("Profile updated successfully!"));
