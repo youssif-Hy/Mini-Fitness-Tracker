@@ -67,7 +67,20 @@ namespace Mini_Fitness_Tracker.Engine
             int padding = (Console.WindowWidth - text.Length) / 2;
             return new string(' ', Math.Max(padding, 0)) + text;
         }
-
+        public static string switchExerciseType(int option)
+        {
+            switch (option)
+            {
+                case 1:
+                    return "Cardio";
+                case 2:
+                    return "Strength";
+                case 3:
+                    return "Yoga";
+                default:
+                    return "";
+            }
+        }
         public static void SwitchMenu()
         {
             Console.Clear();

@@ -6,11 +6,12 @@ using System.Threading.Tasks;
 //دي كلاس لكل تمرين
 namespace Mini_Fitness_Tracker.Models
 {
-    class Exercise
+   public class Exercise
     {
         private string name; // e.g., Runningwithgroup, Swimming22/2023
         private string type; // e.g., Cardio, Strength, Yoga
         private double caloriesBurnedPermin; // calories burned per minute
+        WorkoutPlan workoutPlan;
 
         public Exercise(string name, string type, double caloriesBurnedPerMin)
         {
