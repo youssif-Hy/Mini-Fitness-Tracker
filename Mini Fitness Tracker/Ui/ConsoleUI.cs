@@ -332,6 +332,7 @@ namespace Mini_Fitness_Tracker.Ui
                 case 1:
                     DataHandler.AddWorkOutPlan(exerciseName, caloriesBurned, duration);
 
+
                     break;
                 case 2:
                     FitnessAppEngine.SwitchExerciseOption();
