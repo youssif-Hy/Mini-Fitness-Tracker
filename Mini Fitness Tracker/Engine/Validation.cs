@@ -119,7 +119,7 @@ namespace Mini_Fitness_Tracker.Engine
         // دالة ValidateUsername تقوم بالتحقق من صحة اسم المستخدم المدخل
         public static string ValidataUsername(string username, int xaxis, int yaxis, int xaxis1, int yaxis1)
         {
-            string title = "Invalid username, Please enter a valid username (at least 5 characters), try again. ";
+            string title = "Invalid username, Please enter a valid username (at least 5 characters and don't contains tow Space), try again. ";
 
             while (true)
             {
@@ -155,10 +155,6 @@ namespace Mini_Fitness_Tracker.Engine
                 }
             }
         }
-
-
-
-
         // دالة ValiDataName تقوم بالتحقق من صحة الاسم المدخل
         public static string ValiDataName(string name, int xaxis, int yaxis, int xaxis1, int yaxis1)
         {
@@ -204,10 +200,10 @@ namespace Mini_Fitness_Tracker.Engine
         //دالة ValidatePassword تقوم بالتحقق من صحة كلمة المرور المدخلة
         public static string ValidataPassword(string password, int xaxis, int yaxis, int xaxis1, int yaxis1)
         {
-            string title = "Invalid password, Please enter a valid password (8 to 18 characters), try again. ";
+            string title = "Invalid password, Please enter a valid password (8 to 18 characters, no spaces, must contain both letters and numbers), try again. ";
             while (true)
             {
-                if (password.Length >= 8 && password.Length <= 18)
+                if (password.Length >= 8 && password.Length <= 18 && !password.Contains(" ") && !password.All(char.IsLetter) && password.All(char.IsDigit))
                 {
                     Space(title, xaxis1, yaxis1);
                     return password;

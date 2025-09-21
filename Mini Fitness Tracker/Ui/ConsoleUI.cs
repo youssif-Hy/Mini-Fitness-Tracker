@@ -159,6 +159,7 @@ namespace Mini_Fitness_Tracker.Ui
         public static int ProfileOptionMenu()
         {
             Console.Clear();
+            Console.WriteLine(FitnessAppEngine.CenterText("🪪 Profile Menu 🪪"));
             Console.WriteLine("1. View Profile");
             Console.WriteLine("2. Edit Profile");
             Console.WriteLine("3. Back to Main Menu");
@@ -166,21 +167,7 @@ namespace Mini_Fitness_Tracker.Ui
             Console.ForegroundColor = ConsoleColor.DarkGray;
             Console.Write("Enter your choice (0-3):");
             Console.ForegroundColor = ConsoleColor.White;
-            int option = Validation.ValidataInputOption(0, 3, 24, 4, 0, 5);
-            return option;
-        }
-        public static int ExercisesOptionMenu()
-        {
-            Console.Clear();
-            Console.WriteLine("1. Cardio (e.g., Running, Jump Rope)");
-            Console.WriteLine("2. Strength (e.g., Squats, Push-ups)");
-            Console.WriteLine("3. Yoga (Flexibility/Balance)");
-            Console.WriteLine("4. Back to Main Menu");
-            Console.WriteLine("0. Exit");
-            Console.ForegroundColor = ConsoleColor.DarkGray;
-            Console.WriteLine("Enter your choice (0-4):");
-            Console.ForegroundColor = ConsoleColor.White;
-            int option = Validation.ValidataInputOption(0, 4, 24, 5, 0, 6);
+            int option = Validation.ValidataInputOption(0, 3, 24, 5, 0, 6);
             return option;
         }
         public static void ViewProfile()
@@ -283,7 +270,7 @@ namespace Mini_Fitness_Tracker.Ui
                     Console.ForegroundColor = ConsoleColor.White;
                     Console.SetCursorPosition(59, 3);
                     string newWeight = Validation.ValidataWeight(Console.ReadLine(), 59, 3, 0, 5);
-                    DataHandler.EditWeight(double.Parse(newWeight));
+                    User.Weight = double.Parse(newWeight);
                     Console.ForegroundColor = ConsoleColor.Green;
                     Console.SetCursorPosition(0, 5);
                     Console.WriteLine(FitnessAppEngine.CenterText("Profile updated successfully!"));
@@ -304,6 +291,22 @@ namespace Mini_Fitness_Tracker.Ui
             return 0;
 
         }
+        public static int ExercisesOptionMenu()
+        {
+            Console.Clear();
+            Console.WriteLine(FitnessAppEngine.CenterText("🏋️ Exercises Menu 🏋️"));
+            Console.WriteLine("1. Cardio (e.g., Running, Jump Rope)");
+            Console.WriteLine("2. Strength (e.g., Squats, Push-ups)");
+            Console.WriteLine("3. Yoga (Flexibility/Balance)");
+            Console.WriteLine("4. Back to Main Menu");
+            Console.WriteLine("0. Exit");
+            Console.ForegroundColor = ConsoleColor.DarkGray;
+            Console.WriteLine("Enter your choice (0-4):");
+            Console.ForegroundColor = ConsoleColor.White;
+            int option = Validation.ValidataInputOption(0, 4, 24, 6, 0, 7);
+            return option;
+        }
+
         public static void CalculateExercisesCalories(int exerciseOption)
         {
             Console.Clear();
@@ -312,7 +315,7 @@ namespace Mini_Fitness_Tracker.Ui
             Console.SetCursorPosition(20, 0);
             string exerciseName = Validation.ValiDataExerciseName(Console.ReadLine(), exerciseOption, 20, 0, 0, 2);
             Console.SetCursorPosition(25, 1);
-            int duration = Validation.ValidataInputOption(1, 300, 25, 1, 0, 2);
+            int duration = Validation.ValidataInputOption(1, 120, 25, 1, 0, 2);
             double caloriesBurned = FitnessAppEngine.CalculateExercisesCalories(exerciseName, exerciseOption, duration);
             Console.SetCursorPosition(0, 2);
             Console.Write($"Calories to be Burned:");
@@ -330,7 +333,7 @@ namespace Mini_Fitness_Tracker.Ui
             switch (option)
             {
                 case 1:
-                    DataHandler.AddWorkOutPlan(exerciseName, caloriesBurned, duration);
+                    // DataHandler.AddWorkOutPlan(exerciseName, caloriesBurned, duration);
 
 
                     break;
@@ -345,96 +348,156 @@ namespace Mini_Fitness_Tracker.Ui
         public static int WorkoutPlanOptionMenu()
         {
             Console.Clear();
+            Console.WriteLine(FitnessAppEngine.CenterText("📋 Workout Plan Menu 📋"));
             Console.WriteLine("1. View Today's Workout Plan");
-            Console.WriteLine("2. Back to Main Menu");
+            Console.WriteLine("2. Add exercises to Workout Plan");
+            Console.WriteLine("3. delete exercises from Workout Plan");
+            Console.WriteLine("4. Back to Main Menu");
             Console.WriteLine("0. Exit");
             Console.ForegroundColor = ConsoleColor.DarkGray;
             Console.Write("Enter your choice (0-2):");
             Console.ForegroundColor = ConsoleColor.White;
-            int option = Validation.ValidataInputOption(0, 2, 24, 3, 0, 4);
+            int option = Validation.ValidataInputOption(0, 4, 24, 4, 0, 5);
             return option;
         }
-        public static void ViewWorkoutPlan()
+        public static int ViewWorkoutPlan()
         {
             Console.Clear();
             //عايز هنا مايثود بترجع اذا كان في تمارين مضافه لليوم ده او لا
-            if (DataHandler.CheckWorkOutPlanToday())
-            {
-                Console.ForegroundColor = ConsoleColor.Magenta;
-                Console.WriteLine(FitnessAppEngine.CenterText("+==============================================================================+"));
-                Console.WriteLine(FitnessAppEngine.CenterText("|                         📋TODAY'S WORKOUT PLAN📋                            |"));
-                Console.WriteLine(FitnessAppEngine.CenterText("+==============================================================================+"));
-                Console.WriteLine(FitnessAppEngine.CenterText("| # | Exercise         | Type         | Cal/min | Duration (min) | Total kcal  |"));
-                Console.WriteLine(FitnessAppEngine.CenterText("+------------------------------------------------------------------------------+"));
-                int YAxis = 5;
-                foreach (var item in WorkoutPlan.workoutItems)
-                {
-                    Console.ForegroundColor = ConsoleColor.Magenta;
-                    Console.WriteLine(FitnessAppEngine.CenterText("|   |                  |              |         |                |             |"));
-                    Console.SetCursorPosition(2, YAxis);
-                    Console.Write($"{WorkoutPlan.workoutItems.IndexOf(item) + 1}");
-                    Console.SetCursorPosition(6, YAxis);
-                    Console.Write($"{item.Exercise.Name}");
-                    Console.SetCursorPosition(22, YAxis);
-                    Console.Write($"{item.Exercise.Type}");
-                    Console.SetCursorPosition(36, YAxis);
-                    Console.Write($"{item.Exercise.CaloriesPerMinute} C/M");
-                    Console.SetCursorPosition(46, YAxis);
-                    Console.Write($"{item.Duration} Min");
-                    Console.SetCursorPosition(62, YAxis);
-                    Console.Write($"{item.Exercise.CalculateCalories(item.Duration)} C");
-                    YAxis++;
-                }
-                Console.WriteLine(FitnessAppEngine.CenterText("+------------------------------------------------------------------------------+"));
-                Console.WriteLine(FitnessAppEngine.CenterText("| Total sessions: Total kcal:        |                                          "));
-                Console.WriteLine(FitnessAppEngine.CenterText("+------------------------------------------------------------------------------+"));
-                Console.ForegroundColor = ConsoleColor.White;
-                Console.SetCursorPosition(18, YAxis);
-                Console.ForegroundColor = ConsoleColor.DarkGray;
-                Console.WriteLine(FitnessAppEngine.CenterText("Press any key to Back to Workout Plan menu 📄"));
-                Console.ForegroundColor = ConsoleColor.White;
-                Console.ReadKey();
-                Console.Clear();
-            }
-            else
-            {
-                Console.WriteLine("No exercises added to today's workout plan.");
-                Console.WriteLine("Press any key to Back to Workout Plan menu 📄");
-                Console.ReadKey();
-                Console.Clear();
-            }
+            //if (DataHandler.CheckWorkOutPlanToday())
+            //{
+            //    Console.ForegroundColor = ConsoleColor.Magenta;
+            //    Console.WriteLine(FitnessAppEngine.CenterText("+==============================================================================+"));
+            //    Console.WriteLine(FitnessAppEngine.CenterText("|                         📋TODAY'S WORKOUT PLAN📋                            |"));
+            //    Console.WriteLine(FitnessAppEngine.CenterText("+==============================================================================+"));
+            //    Console.WriteLine(FitnessAppEngine.CenterText("| # | Exercise         | Type         | Cal/min | Duration (min) | Total kcal  |"));
+            //    Console.WriteLine(FitnessAppEngine.CenterText("+------------------------------------------------------------------------------+"));
+            int YAxis = 5;
+            //    foreach (var item in WorkoutPlan.workoutItems)
+            //    {
+            //        Console.ForegroundColor = ConsoleColor.Magenta;
+            //        Console.WriteLine(FitnessAppEngine.CenterText("|   |                  |              |         |                |             |"));
+            //        Console.ForegroundColor = ConsoleColor.White;
+            //        Console.SetCursorPosition(2, YAxis);
+            //        Console.Write($"{WorkoutPlan.workoutItems.IndexOf(item) + 1}");
+            //        Console.SetCursorPosition(6, YAxis);
+            //        Console.Write($"{item.Exercise.Name}");
+            //        Console.SetCursorPosition(22, YAxis);
+            //        Console.Write($"{item.Exercise.Type}");
+            //        Console.SetCursorPosition(36, YAxis);
+            //        Console.Write($"{item.Exercise.CaloriesPerMinute} C/M");
+            //        Console.SetCursorPosition(46, YAxis);
+            //        Console.Write($"{item.Duration} Min");
+            //        Console.SetCursorPosition(62, YAxis);
+            //        Console.Write($"{item.Exercise.CalculateCalories(item.Duration)} C");
+            //        YAxis++;
+            //    }
+            //    Console.WriteLine(FitnessAppEngine.CenterText("+------------------------------------------------------------------------------+"));
+            //    Console.WriteLine(FitnessAppEngine.CenterText("| Total sessions: Total kcal:        |                                          "));
+            //    Console.WriteLine(FitnessAppEngine.CenterText("+------------------------------------------------------------------------------+"));
+            //    Console.ForegroundColor = ConsoleColor.White;
+            //    Console.SetCursorPosition(18, YAxis);
+            //    Console.ForegroundColor = ConsoleColor.DarkGray;
+            //    Console.WriteLine(FitnessAppEngine.CenterText("Press any key to Back to Workout Plan menu 📄"));
+            //    Console.ForegroundColor = ConsoleColor.White;
+            //    Console.ReadKey();
+            //    Console.Clear();
+            //}
+            //else
+            //{
+            //    Console.WriteLine("No exercises added to today's workout plan.");
+            //    Console.WriteLine("Press any key to Back to Workout Plan menu 📄");
+            //    Console.ReadKey();
+            //    Console.Clear();
+            //}
+            return YAxis;
         }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+        public static void AddExercisesToWorkoutPlan()
+        {
+            FitnessAppEngine.SwitchExerciseOption();
+        }
+        public static void DeleteExercisesFromWorkoutPlan()
+        {
+            Console.Clear();
+            int YAxis = ViewWorkoutPlan();
+            //    Console.SetCursorPosition(18, YAxis);
+            //    Console.ForegroundColor = ConsoleColor.DarkGray;
+            //    Console.WriteLine(FitnessAppEngine.CenterText("Enter the number of the exercise to delete or 0 to cancel:"));
+            //    Console.ForegroundColor = ConsoleColor.White;
+            //    int option = Validation.ValidataInputOption(0, WorkoutPlan.workoutItems.Count, 24, YAxis + 1, 0, YAxis + 2);
+            //    if (option != 0)
+            //    {
+            //        DataHandler.DeleteWorkOutPlan(option - 1);
+            //        Console.SetCursorPosition(0, YAxis + 3);
+            //        Console.ForegroundColor = ConsoleColor.Green;
+            //        Console.WriteLine(FitnessAppEngine.CenterText("Exercise deleted successfully!"));
+            //        Console.ForegroundColor = ConsoleColor.DarkGray;
+            //        Console.Write(FitnessAppEngine.CenterText("Press any key to continue..."));
+            //        Console.ResetColor();
+            //        Console.ReadKey();
+            //        Console.Clear();
+            //    }
+            //    else
+            //    {
+            //        Console.Clear();
+            //        FitnessAppEngine.SwitchWorkOutPlan();
+            //    }
+            //}
+            //else
+            //{
+            //    Console.WriteLine("No exercises added to today's workout plan.");
+            //    Console.WriteLine("Press any key to Back to Workout Plan menu 📄");
+            //    Console.ReadKey();
+            //    Console.Clear();
+            //}
+        }
+        public static int ProgressOptionMenu()
+        {
+            Console.Clear();
+            Console.WriteLine(FitnessAppEngine.CenterText("📊 Progress Menu 📊"));
+            Console.WriteLine("1. View daily Progress");
+            Console.WriteLine("2. View weekly Progress");
+            Console.WriteLine("3. Back to Main Menu");
+            Console.WriteLine("0. Exit");
+            Console.ForegroundColor = ConsoleColor.DarkGray;
+            Console.Write("Enter your choice (0-2):");
+            Console.ForegroundColor = ConsoleColor.White;
+            int option = Validation.ValidataInputOption(0, 2, 24, 5, 0, 6);
+            return option;
+        }
+        public static void ViewDailyProgress()
+        {
+            Console.Clear();
+            Console.WriteLine(FitnessAppEngine.CenterText("+====================================================+"));
+            Console.WriteLine(FitnessAppEngine.CenterText("|                   Daily Progress                   |"));
+            Console.WriteLine(FitnessAppEngine.CenterText("+====================================================+"));
+            Console.WriteLine(FitnessAppEngine.CenterText("| Workout Time (minutes) :                           |"));
+            Console.WriteLine(FitnessAppEngine.CenterText("| Calories Burned        :                           |"));
+            Console.WriteLine(FitnessAppEngine.CenterText("| Exercise Stats         :                           |"));
+            Console.WriteLine(FitnessAppEngine.CenterText("+====================================================+"));
+            Console.WriteLine(FitnessAppEngine.CenterText("|     Press any key to Back to Progress menu📄       |"));
+            Console.WriteLine(FitnessAppEngine.CenterText("+====================================================+"));
+            Progresstracker.DisplaydailyProgress();
+            Console.ReadKey();
+            Console.Clear();
+        }
+        public static void ViewWeeklyProgress()
+        {
+            Console.Clear();
+            Console.WriteLine(FitnessAppEngine.CenterText("+====================================================+"));
+            Console.WriteLine(FitnessAppEngine.CenterText("|                  Weekly Progress                   |"));
+            Console.WriteLine(FitnessAppEngine.CenterText("+====================================================+"));
+            Console.WriteLine(FitnessAppEngine.CenterText("| Total Workout time (minutes)   :                   |"));
+            Console.WriteLine(FitnessAppEngine.CenterText("| Total Calories burned per week :                   |"));
+            Console.WriteLine(FitnessAppEngine.CenterText("| Total Calories burned per day  :                   |"));
+            Console.WriteLine(FitnessAppEngine.CenterText("| Exercise Stats                 :                   |"));
+            Console.WriteLine(FitnessAppEngine.CenterText("+====================================================+"));
+            Console.WriteLine(FitnessAppEngine.CenterText("|     Press any key to Back to Progress menu📄       |"));
+            Console.WriteLine(FitnessAppEngine.CenterText("+====================================================+"));
+            Progresstracker.DisplayweeklyProgress();
+            Console.ReadKey();
+            Console.Clear();
+        }
         //دالة WriteSlow تقوم بكتابة النص ببطء على الشاشة
         public static void WriteSlow(string word, int delay, int xaxis, int yaxis)
         {
