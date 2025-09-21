@@ -91,49 +91,72 @@ namespace Mini_Fitness_Tracker.Utils
             File.WriteAllLines(UserDataFile, updatedLines);
         }
 
-        public static void EditAge(int newage)
+        public static void EditAge(int newAge)
         {
             string[] lines = File.ReadAllLines(UserDataFile);
-            foreach (string line in lines)
-            {
-                string[] parts = line.Split(',');
-                if (parts[0] == User.Username)
-                {
-                    parts[3] = newage.ToString();
-                    User.Age = newage;
-                }
-            }
-            File.WriteAllLines(UserDataFile, lines);
-        }
-        public static void EditWeight(double newweight)
-        {
-            string[] lines = File.ReadAllLines(UserDataFile);
-            foreach (string line in lines)
-            {
-                string[] parts = line.Split(',');
-                if (parts[0] == User.Username)
-                {
-                    parts[4] = newweight.ToString();
-                    User.Weight = newweight;
-                }
-            }
-            File.WriteAllLines(UserDataFile, lines);
-        }
-        public static void EditHeight(double newheight)
-        {
-            string[] lines = File.ReadAllLines(UserDataFile);
-            foreach (string line in lines)
-            {
-                string[] parts = line.Split(',');
-                if (parts[0] == User.Username)
-                {
-                    parts[5] = newheight.ToString();
-                    User.Height = newheight;
-                }
-            }
-            File.WriteAllLines(UserDataFile, lines);
-        }
+            List<string> updatedLines = lines.ToList();
 
+            for (int i = 0; i < updatedLines.Count; i++)
+            {
+                string[] parts = updatedLines[i].Split(',');
+
+                if (parts[0] == User.Username) // لو ده المستخدم اللي عايز اعدل بياناته
+                {
+                    parts[3] = newAge.ToString();        // عدّل العمود اللي فيه الاسم
+                    User.Age = newAge;       // حدّث الكائن كمان
+
+                    // خزّن السطر المعدّل في نفس المكان (overwrite مش Add)
+                    updatedLines[i] = string.Join(",", parts);
+                }
+            }
+
+            // اكتب كل السطور المعدلة مرة واحدة
+            File.WriteAllLines(UserDataFile, updatedLines);
+        }
+        public static void EditHeight(double newHeight)
+        {
+            string[] lines = File.ReadAllLines(UserDataFile);
+            List<string> updatedLines = lines.ToList();
+
+            for (int i = 0; i < updatedLines.Count; i++)
+            {
+                string[] parts = updatedLines[i].Split(',');
+
+                if (parts[0] == User.Username) // لو ده المستخدم اللي عايز اعدل بياناته
+                {
+                    parts[4] = newHeight.ToString();        // عدّل العمود اللي فيه الاسم
+                    User.Height = newHeight;       // حدّث الكائن كمان
+
+                    // خزّن السطر المعدّل في نفس المكان (overwrite مش Add)
+                    updatedLines[i] = string.Join(",", parts);
+                }
+            }
+
+            // اكتب كل السطور المعدلة مرة واحدة
+            File.WriteAllLines(UserDataFile, updatedLines);
+        }
+        public static void EditWeight(double newWeight)
+        {
+            string[] lines = File.ReadAllLines(UserDataFile);
+            List<string> updatedLines = lines.ToList();
+
+            for (int i = 0; i < updatedLines.Count; i++)
+            {
+                string[] parts = updatedLines[i].Split(',');
+
+                if (parts[0] == User.Username) // لو ده المستخدم اللي عايز اعدل بياناته
+                {
+                    parts[5] = newWeight.ToString();        // عدّل العمود اللي فيه الاسم
+                    User.Weight = newWeight;       // حدّث الكائن كمان
+
+                    // خزّن السطر المعدّل في نفس المكان (overwrite مش Add)
+                    updatedLines[i] = string.Join(",", parts);
+                }
+            }
+
+            // اكتب كل السطور المعدلة مرة واحدة
+            File.WriteAllLines(UserDataFile, updatedLines);
+        }
         public static void AddWorkOutPlan(string exerciseName, double caloriesBurned, int duration)
         {
             string workoutplanfile = $"{User.Username}_workoutplans.txt";
