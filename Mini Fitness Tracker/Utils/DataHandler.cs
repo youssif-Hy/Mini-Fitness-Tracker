@@ -4,6 +4,7 @@ using System.IO;
 using System.IO.Ports;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Web;
 using System.Xml.Linq;
@@ -170,25 +171,64 @@ namespace Mini_Fitness_Tracker.Utils
                 File.WriteAllText(workoutplanfile, lines);
             }
         }
-        public static bool ViewWorkOutPlans()
+        public static void deleteExerciseWorkOutPlan(int index)
         {
+            string workoutplanfile = $"{User.Username}_workoutplans.txt";
+            string[] lines = File.ReadAllLines(workoutplanfile);
+
+            if (File.Exists(workoutplanfile))
+            {
+                List<string> strings = lines.ToList();
+                int i = 0;
+                foreach (var part in lines)
+                {
+                    string[] parts = part.Split(',');
+                    if (parts[0] == DateTime.Today.ToString("d"))
+                    {  
+                        strings.RemoveAt(index+i);
+                        WorkoutPlan.WorkoutPlans.RemoveAt(index);
+                        break;
+                    }
+                    i++;
+                }
+                File.WriteAllLines(workoutplanfile, strings);
+            }
+        }
+        public static void AddWorkOutPlanInList()
+        {
+            
             string workoutplanfile = $"{User.Username}_workoutplans.txt";
             if (File.Exists(workoutplanfile)) // التحقق من وجود ملف بيانات المستخدمين
             {
+                string type = "";
                 string[] lines = File.ReadAllLines(workoutplanfile);// قراءة جميع الأسطر من الملف
                 foreach (string line in lines)
                 {
-                    // تقسيم السطر الى جزاء باتخدام الفاصلة كفاصل
+                    // تقسيم السطر إلى أجزاء باستخدام الفاصلة كفاصل
                     string[] parts = line.Split(',');
-                    Console.WriteLine($"Exercise Name: {parts[0]}, Calories Burned: {parts[1]}, Duration: {parts[2]} minutes");
+                    // التحقق من تطابق اسم المستخدم وكلمة المرور
+
+                    if (parts[0] == DateTime.Today.ToString("d"))
+                    {
+                        if (parts[1].Equals("running") || parts[1].Equals("cycling") || parts[1].Equals("swimming") || parts[1].Equals("walking") || parts[1].Equals("jump rope") || parts[1].Equals("stair climbing") || parts[1].Equals("dancing") || parts[1].Equals("boxing") || parts[1].Equals("rowing") || parts[1].Equals("basketball") || parts[1].Equals("tennis"))
+                        {
+                            type = "Cardio";
+                        }
+                        else if (parts[1].Equals("squats") || parts[1].Equals("lunges") || parts[1].Equals("push-ups") || parts[1].Equals("pull-ups") || parts[1].Equals("deadlifts") || parts[1].Equals("bench press") || parts[1].Equals("plank") || parts[1].Equals("shoulder press") || parts[1].Equals("bicep curls") || parts[1].Equals("kettlebell training"))
+                        {
+                            type = "Strength";
+                        }
+                        else
+                        {
+                            type = "Yoga";
+                        }
+                        Exercise ex = new Exercise(parts[1], type, (double.Parse(parts[2]) / int.Parse(parts[3])), double.Parse(parts[2]), int.Parse(parts[3]));
+                        WorkoutPlan.WorkoutPlans.Add(ex);
+                    }
                 }
-                return true;
-            }
-            else
-            {
-                return false;
             }
         }
+
         public static bool CheckWorkOutPlanToday()
         {
             string workoutplanfile = $"{User.Username}_workoutplans.txt";

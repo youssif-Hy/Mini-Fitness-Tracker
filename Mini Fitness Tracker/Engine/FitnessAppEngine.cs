@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Mini_Fitness_Tracker.Models;
 using Mini_Fitness_Tracker.Ui;
+using Mini_Fitness_Tracker.Utils;
 
 namespace Mini_Fitness_Tracker.Engine
 {
@@ -12,7 +13,7 @@ namespace Mini_Fitness_Tracker.Engine
     {
         public static void Run()
         {
-            Console.OutputEncoding = System.Text.Encoding.UTF8;
+            Console.OutputEncoding = Encoding.UTF8;
 
             try
             {
@@ -61,26 +62,6 @@ namespace Mini_Fitness_Tracker.Engine
         
             SwitchMenu();
         }
-        // Center text in console window
-        public static string CenterText(string text)
-        {
-            int padding = (Console.WindowWidth - text.Length) / 2;
-            return new string(' ', Math.Max(padding, 0)) + text;
-        }
-        public static string switchExerciseType(int option)
-        {
-            switch (option)
-            {
-                case 1:
-                    return "Cardio";
-                case 2:
-                    return "Strength";
-                case 3:
-                    return "Yoga";
-                default:
-                    return "";
-            }
-        }
         public static void SwitchMenu()
         {
             Console.Clear();
@@ -113,6 +94,28 @@ namespace Mini_Fitness_Tracker.Engine
             }
             SwitchMenu();
         }
+        public static void SwitchProfile()
+        {
+
+            int ProfileOption = ConsoleUI.ProfileOptionMenu();
+            switch (ProfileOption)
+            {
+                case 1:
+                    ConsoleUI.ViewProfile();
+                    break;
+                case 2:
+                    ConsoleUI.EditProfile();
+                    break;
+                case 3:
+                    SwitchMenu();
+                    break;
+                case 0:
+                    Environment.Exit(0);
+                    break;
+            }
+            SwitchProfile();
+
+        }
         public static void SwitchExerciseOption()
         {
             int option = ConsoleUI.ExercisesOptionMenu();
@@ -138,49 +141,37 @@ namespace Mini_Fitness_Tracker.Engine
             switch (option)
             {
                 case 1:
-                    ConsoleUI.ViewWorkoutPlan();
+                    ConsoleUI.ViewTodayWorkoutPlan(6);
                     break;
                 case 2:
-                    SwitchMenu();
+                    SwitchExerciseOption();
                     break;
                 case 3:
-                    Environment.Exit(0);
+                    ConsoleUI.DeleteExercisesFromWorkoutPlan();
                     break;
-            }
-            SwitchWorkOutPlan();
-        }
-
-
-
-
-        public static void SwitchProfile()
-        {
-
-            int ProfileOption = ConsoleUI.ProfileOptionMenu();
-            switch (ProfileOption)
-            {
-                case 1:
-                    ConsoleUI.ViewProfile();
-                    break;
-                case 2:
-                    ConsoleUI.EditProfile();
-                    break;
-                case 3:
+                case 4:
                     SwitchMenu();
                     break;
                 case 0:
                     Environment.Exit(0);
                     break;
-                default:
-                    Console.WriteLine(CenterText("Invalid option Please try again"));
-                    Console.ReadKey();
-                    Console.Clear();
-                    break;
             }
-            SwitchProfile();
-
+            SwitchWorkOutPlan();
         }
-
+        public static string switchExerciseType(int option)
+        {
+            switch (option)
+            {
+                case 1:
+                    return "Cardio";
+                case 2:
+                    return "Strength";
+                case 3:
+                    return "Yoga";
+                default:
+                    return "";
+            }
+        }
         public static double CalculateExercisesCalories(string exerciseName, int exerciseOption, double duration)
         {
             double METs =0;
@@ -200,7 +191,9 @@ namespace Mini_Fitness_Tracker.Engine
             }
             
             double caloriesBurnedPerMin = (METs * 3.5 * weight) / 200.0;
-            return caloriesBurnedPerMin * duration;
+            double totalCaloriesBurned = caloriesBurnedPerMin * duration;
+
+            return totalCaloriesBurned;
 
         }
         public static double switchOptionCardio(string exerciseName)
@@ -270,7 +263,12 @@ namespace Mini_Fitness_Tracker.Engine
             }
             return 0;
         }
-
+        // Center text in console window
+        public static string CenterText(string text)
+        {
+            int padding = (Console.WindowWidth - text.Length) / 2;
+            return new string(' ', Math.Max(padding, 0)) + text;
+        }
 
     }
 }

@@ -10,9 +10,7 @@ namespace Mini_Fitness_Tracker.Models
 
     public class WorkoutPlan
     {
-        private static List<WorkoutPlan> workoutPlans = new List<WorkoutPlan>();
-        private static List<Exercise> _exercises = new List<Exercise>();
-        Exercise exercise;
+        private static List<Exercise> workoutPlans = new List<Exercise>();
         private static DateTime date;
         private static double durationPerExercise;
 
@@ -34,7 +32,7 @@ namespace Mini_Fitness_Tracker.Models
             }
         }
 
-        public static List<WorkoutPlan> WorkoutPlans
+        public static List<Exercise> WorkoutPlans
         {
             get
             {
@@ -46,17 +44,7 @@ namespace Mini_Fitness_Tracker.Models
             }
         }
 
-        public static List<Exercise> exercises
-        {
-            get
-            {
-                return exercises;
-            }
-            set
-            {
-                value = exercises;
-            }
-        }
+        
 
 
 
