@@ -203,7 +203,7 @@ namespace Mini_Fitness_Tracker.Engine
             string title = "Invalid password, Please enter a valid password (8 to 18 characters, no spaces, must contain both letters and numbers), try again. ";
             while (true)
             {
-                if (password.Length >= 8 && password.Length <= 18 && !password.Contains(" ") && !password.All(char.IsLetter) && password.All(char.IsDigit))
+                if (password.Length >= 8 && password.Length <= 18 && !password.Contains(" ") && password.Any(char.IsLetter) && password.Any(char.IsDigit))
                 {
                     Space(title, xaxis1, yaxis1);
                     return password;

@@ -270,7 +270,7 @@ namespace Mini_Fitness_Tracker.Ui
                     Console.ForegroundColor = ConsoleColor.White;
                     Console.SetCursorPosition(59, 3);
                     string newWeight = Validation.ValidataWeight(Console.ReadLine(), 59, 3, 0, 5);
-                    User.Weight = double.Parse(newWeight);
+                    DataHandler.EditWeight(double.Parse(newWeight));
                     Console.ForegroundColor = ConsoleColor.Green;
                     Console.SetCursorPosition(0, 5);
                     Console.WriteLine(FitnessAppEngine.CenterText("Profile updated successfully!"));
