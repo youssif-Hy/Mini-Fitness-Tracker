@@ -15,6 +15,7 @@ namespace Mini_Fitness_Tracker.Models
         private int duration;
         WorkoutPlan workoutPlan;
 
+        // Constructor to initialize an exercise
         public Exercise(string name, string type, double caloriesBurnedPerMin, double TotalCaloriesBurned, int Duration)
         {
             this.name = name;
@@ -23,9 +24,11 @@ namespace Mini_Fitness_Tracker.Models
             totalBurnedPermin = TotalCaloriesBurned;
             duration = Duration;
         }
+
         public int Duration
         {
-            get 
+            // getter and setter for duration
+            get
             {
                 return duration; 
             }
@@ -82,19 +85,7 @@ namespace Mini_Fitness_Tracker.Models
             }
         }
 
-        public double CalculateCalories(double durationInMinutes)
-        {
-            return caloriesBurnedPermin * durationInMinutes;
-        }
-
-
-
-        public void ShowExercise()
-        {
-            Console.WriteLine("Exercise Name: " + name);
-            Console.WriteLine("Exercise Type: " + type);
-            Console.WriteLine("Calories Burned Per Minute: " + caloriesBurnedPermin);
-        }
+       
 
 
 
