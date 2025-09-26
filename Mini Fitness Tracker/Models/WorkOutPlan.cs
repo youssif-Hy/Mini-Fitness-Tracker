@@ -14,11 +14,15 @@ namespace Mini_Fitness_Tracker.Models
         private static DateTime date;
         private static double durationPerExercise;
 
+
+
         public static DateTime Date
         {
             get { return date; }
             set { date = value; }
         }
+
+
 
         public static double DurationPerExercise
         {
@@ -31,6 +35,9 @@ namespace Mini_Fitness_Tracker.Models
                 value = durationPerExercise;
             }
         }
+
+
+
 
         public static List<Exercise> WorkoutPlans
         {
