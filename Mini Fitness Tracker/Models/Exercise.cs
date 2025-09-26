@@ -13,7 +13,6 @@ namespace Mini_Fitness_Tracker.Models
         private double caloriesBurnedPermin; // calories burned per minute
         private double totalBurnedPermin; 
         private int duration;
-        WorkoutPlan workoutPlan;
 
         public Exercise(string name, string type, double caloriesBurnedPerMin, double TotalCaloriesBurned, int Duration)
         {
@@ -81,21 +80,6 @@ namespace Mini_Fitness_Tracker.Models
                 caloriesBurnedPermin = value;
             }
         }
-
-        public double CalculateCalories(double durationInMinutes)
-        {
-            return caloriesBurnedPermin * durationInMinutes;
-        }
-        public void ShowExercise()
-        {
-            Console.WriteLine("Exercise Name: " + name);
-            Console.WriteLine("Exercise Type: " + type);
-            Console.WriteLine("Calories Burned Per Minute: " + caloriesBurnedPermin);
-        }
-
-
-
-
     }
 }
     

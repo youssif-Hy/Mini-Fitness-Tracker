@@ -262,6 +262,25 @@ namespace Mini_Fitness_Tracker.Engine
                     return 2;
             }
             return 0;
+        }   
+        public static void ShowProgresseMenue()
+        {
+            int option = ConsoleUI.ProgressOptionMenu();
+            switch(option)
+            {
+                case 1:
+                    //daily
+                    break;
+                case 2:
+                    //weekly
+                    break;
+                case 3:
+                    SwitchMenu();
+                    break;
+                case 0:
+                    Environment.Exit(0);
+                    break;
+            }
         }
         // Center text in console window
         public static string CenterText(string text)
