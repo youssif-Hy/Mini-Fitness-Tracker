@@ -13,7 +13,7 @@ namespace Mini_Fitness_Tracker.Models
         private double caloriesBurnedPermin; // calories burned per minute
         private double totalBurnedPermin; // = caloriesBurnedPermin x duration
         private int duration;
-        WorkoutPlan workoutPlan;
+        WorkoutPlan workoutPlan;//احنا عايزين دي؟؟؟؟؟؟؟؟؟؟؟؟
 
         // Constructor to initialize an exercise
         public Exercise(string name, string type, double caloriesBurnedPerMin, double TotalCaloriesBurned, int Duration)
