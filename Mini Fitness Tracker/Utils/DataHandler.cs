@@ -247,5 +247,45 @@ namespace Mini_Fitness_Tracker.Utils
             }
             return false;
         }
+        public static int DurationProgress()
+        {
+            int totalDuration = 0;
+            string workoutplanfile = $"{User.Username}_workoutplans.txt";
+            if (File.Exists(workoutplanfile)) // التحقق من وجود ملف بيانات المستخدمين
+            {
+                string[] lines = File.ReadAllLines(workoutplanfile);// قراءة جميع الأسطر من الملف
+                foreach (string line in lines)
+                {
+                    // تقسيم السطر الى جزاء باتخدام الفاصلة كفاصل
+                    string[] parts = line.Split(',');
+                    if (parts[0] == DateTime.Today.ToString("d"))
+                    {
+                        totalDuration += int.Parse(parts[3]);
+                    }
+                }
+                return totalDuration;
+            }
+            return 0;
+        }
+        public static double CaloriesBurnedProgress()
+        {
+            int totalCalories = 0;
+            string workoutplanfile = $"{User.Username}_workoutplans.txt";
+            if (File.Exists(workoutplanfile)) // التحقق من وجود ملف بيانات المستخدمين
+            {
+                string[] lines = File.ReadAllLines(workoutplanfile);// قراءة جميع الأسطر من الملف
+                foreach (string line in lines)
+                {
+                    // تقسيم السطر الى جزاء باتخدام الفاصلة كفاصل
+                    string[] parts = line.Split(',');
+                    if (parts[0] == DateTime.Today.ToString("d"))
+                    {
+                        totalCalories += int.Parse(parts[2]);
+                    }
+                }
+                return totalCalories;
+            }
+            return 0;
+        }
     }
 }

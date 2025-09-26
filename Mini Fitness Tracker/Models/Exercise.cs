@@ -11,6 +11,8 @@ namespace Mini_Fitness_Tracker.Models
         private string name; // e.g., Runningwithgroup, Swimming22/2023
         private string type; // e.g., Cardio, Strength, Yoga
         private double caloriesBurnedPermin; // calories burned per minute
+        private double totalBurnedPermin; 
+        private int duration;
         private double totalBurnedPermin; // = caloriesBurnedPermin x duration
         private int duration; // duration in minutes
         WorkoutPlan workoutPlan;//احنا عايزين دي؟؟؟؟؟؟؟؟؟؟؟؟
@@ -84,12 +86,6 @@ namespace Mini_Fitness_Tracker.Models
                 caloriesBurnedPermin = value;
             }
         }
-
-       
-
-
-
-
     }
 }
     

@@ -9,46 +9,37 @@ namespace Mini_Fitness_Tracker.Models
     //diplay stats of the user progress of the week and day
     class Progresstracker
     {
-        private static int totalWorkoutTimeperday; // in minutes
-        private static int weeklycalories;
-        private static string exercisestats = "not started";
+        private static int TotalDurationOfDay; // in minutes
+        private static int TotalDurationOfDays;
+        private static int TotalCaloriesBurnedOfDay;
+        private static int TotalCaloriesBurnedOfDays;
 
-        public void UpdateProgress(int workoutTime, int caloriesBurned, string exerciseStats)
+        public void UpdatedayProgress(int totalDurationOfDay, int totalCaloriesBurnedOfDay)
         {
-            totalWorkoutTimeperday += workoutTime;
-            weeklycalories += caloriesBurned;
-            exercisestats = exerciseStats;
+            TotalDurationOfDay = totalDurationOfDay;
+            TotalCaloriesBurnedOfDay = totalCaloriesBurnedOfDay;
         }
-
-
-
-
-
-
-        public static void DisplayweeklyProgress()
+        public void UpdateweekProgress(int totalDurationOfDays, int totalCaloriesBurnedOfDays, string exerciseStats)
         {
-            Console.SetCursorPosition(30, 3);
-            Console.WriteLine(totalWorkoutTimeperday);
-            Console.SetCursorPosition(30, 4);
-            Console.WriteLine(weeklycalories);
-            Console.SetCursorPosition(30, 5);
-            Console.WriteLine(weeklycalories / 7);
-            Console.SetCursorPosition(30, 6);
-            Console.WriteLine(exercisestats);
+            TotalDurationOfDays = totalDurationOfDays;
+            TotalCaloriesBurnedOfDays = totalCaloriesBurnedOfDays;
         }
-
         public static void DisplaydailyProgress()
         {
             Console.SetCursorPosition(30, 3);
-            Console.WriteLine(totalWorkoutTimeperday);
+            Console.WriteLine(TotalDurationOfDay);
             Console.SetCursorPosition(30, 4);
-            Console.WriteLine( weeklycalories);
-            Console.SetCursorPosition(30, 5);
-            Console.WriteLine(exercisestats);
+            Console.WriteLine(TotalCaloriesBurnedOfDay);
         }
-
-
-
-
+        public static void DisplayweeklyProgress()
+        {
+            Console.SetCursorPosition(30, 3);
+            Console.WriteLine(TotalDurationOfDays);
+            Console.SetCursorPosition(30, 5);
+            Console.WriteLine(TotalCaloriesBurnedOfDays / 7);
+            Console.SetCursorPosition(30, 6);
+            Console.WriteLine(TotalCaloriesBurnedOfDays);
+        }
+       
     }
 }

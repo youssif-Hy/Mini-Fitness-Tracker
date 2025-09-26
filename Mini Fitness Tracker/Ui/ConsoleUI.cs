@@ -478,7 +478,6 @@ namespace Mini_Fitness_Tracker.Ui
             Console.WriteLine(FitnessAppEngine.CenterText("+====================================================+"));
             Console.WriteLine(FitnessAppEngine.CenterText("| Workout Time (minutes) :                           |"));
             Console.WriteLine(FitnessAppEngine.CenterText("| Calories Burned        :                           |"));
-            Console.WriteLine(FitnessAppEngine.CenterText("| Exercise Stats         :                           |"));
             Console.WriteLine(FitnessAppEngine.CenterText("+====================================================+"));
             Console.WriteLine(FitnessAppEngine.CenterText("|     Press any key to Back to Progress menu📄       |"));
             Console.WriteLine(FitnessAppEngine.CenterText("+====================================================+"));
@@ -493,9 +492,8 @@ namespace Mini_Fitness_Tracker.Ui
             Console.WriteLine(FitnessAppEngine.CenterText("|                  Weekly Progress                   |"));
             Console.WriteLine(FitnessAppEngine.CenterText("+====================================================+"));
             Console.WriteLine(FitnessAppEngine.CenterText("| Total Workout time (minutes)   :                   |"));
-            Console.WriteLine(FitnessAppEngine.CenterText("| Total Calories burned per week :                   |"));
             Console.WriteLine(FitnessAppEngine.CenterText("| Total Calories burned per day  :                   |"));
-            Console.WriteLine(FitnessAppEngine.CenterText("| Exercise Stats                 :                   |"));
+            Console.WriteLine(FitnessAppEngine.CenterText("| Total Calories burned In week  :                   |"));
             Console.WriteLine(FitnessAppEngine.CenterText("+====================================================+"));
             Console.WriteLine(FitnessAppEngine.CenterText("|     Press any key to Back to Progress menu📄       |"));
             Console.WriteLine(FitnessAppEngine.CenterText("+====================================================+"));
