@@ -13,7 +13,11 @@ namespace Mini_Fitness_Tracker.Models
         private double caloriesBurnedPermin; // calories burned per minute
         private double totalBurnedPermin; 
         private int duration;
+        private double totalBurnedPermin; // = caloriesBurnedPermin x duration
+        private int duration; // duration in minutes
+        WorkoutPlan workoutPlan;//احنا عايزين دي؟؟؟؟؟؟؟؟؟؟؟؟
 
+        // Constructor to initialize an exercise
         public Exercise(string name, string type, double caloriesBurnedPerMin, double TotalCaloriesBurned, int Duration)
         {
             this.name = name;
@@ -22,9 +26,11 @@ namespace Mini_Fitness_Tracker.Models
             totalBurnedPermin = TotalCaloriesBurned;
             duration = Duration;
         }
+
         public int Duration
         {
-            get 
+            // getter and setter for duration
+            get
             {
                 return duration; 
             }
