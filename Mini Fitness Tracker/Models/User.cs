@@ -13,7 +13,6 @@ namespace Mini_Fitness_Tracker.Models
         private static int age; 
         private static double weight;
         private static double height;
-        private static double bmi;
         private static string username;
         private static string password;
 
@@ -69,66 +68,6 @@ namespace Mini_Fitness_Tracker.Models
             Age = age;
             Weight = weight;
             Height = height;
-        }
-
-
-
-
-
-
-
-        // fffBMI stands for
-        //bfffody mass index and its formula is weight in kg/ height in m^2 
-        // fffto identify if a person is underweight, normal weight, overweight or obese
-        // fffBMI < 18.5 = underweight
-        // fffBMI 18.5 - 24.9 = normal weight
-        // fffBMI 25 - 29.9 = overweight
-        // fffBMI >= 30 = obese
-           
-        public string GetBmiCategory()
-        {
-
-            double bmi = CalculateBmi();
-
-            if (bmi < 18.5)
-                return "Underweight";
-            else if (bmi < 25)
-                return "Normal weight";
-            else if (bmi < 30)
-                return "Overweight";
-            else
-                return "Obese";
-
-
-        }
-
-
-        /// key Mehods
-
-        public void UpdateProfile(string name, int age, double weight, double height)
-        {
-            Name = name;
-            Age = age;
-            Weight = weight;
-            Height = height;
-        }
-
-
-        public void ShowProfile()
-        {
-            Console.WriteLine("Name: " + Name);
-            Console.WriteLine("Age: " + Age);
-            Console.WriteLine("Weight: " + Weight);
-            Console.WriteLine("Height: " + Height);
-            Console.WriteLine("BMI: " + CalculateBmi().ToString("F2"));
-            Console.WriteLine("BMI Category: " + GetBmiCategory());
-        }
-
-
-
-
-
-
-        public int workoutPlans;
+        }          
     }
 }
