@@ -76,16 +76,16 @@ namespace Mini_Fitness_Tracker.Engine
                 case 1: // Profile    \/
                     SwitchProfile();
                     break;
-                case 2:
+                case 2:// Exercise
                     SwitchExerciseOption();
                     break;
                 case 3: // Workout Plan
                     SwitchWorkOutPlan();
                     break;
-                case 4:
+                case 4:// Progress
                     ShowProgressMenu();
                     break;
-                case 5:
+                case 5:// to go first point in login or reg.. 
                     Run();
                     break;
                 case 0: // Exit
@@ -211,7 +211,7 @@ namespace Mini_Fitness_Tracker.Engine
             return totalCaloriesBurned;
 
         }
-
+        // to calcute the caluers burnd "METS to Cardio"
         public static double switchOptionCardio(string exerciseName)
         {
             switch(exerciseName.ToLower())
@@ -235,7 +235,7 @@ namespace Mini_Fitness_Tracker.Engine
             }
             return 0;
         }
-
+        // to calcute the caluers burnd "METS to Stretneth"
         public static double switchOptionStrength(string exerciseName)
         {
             switch (exerciseName.ToLower())
@@ -259,6 +259,7 @@ namespace Mini_Fitness_Tracker.Engine
             }
             return 0;
         }
+        // to calcute the caluers burnd "METS to Yoga"
         public static double switchOptionYoga(string exerciseName)
         {
             switch (exerciseName.ToLower())

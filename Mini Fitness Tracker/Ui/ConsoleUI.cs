@@ -116,6 +116,7 @@ namespace Mini_Fitness_Tracker.Ui
             Console.WriteLine(FitnessAppEngine.CenterText("|          [ Press ENTER after each input to continue ]                          |"));
             Console.WriteLine(FitnessAppEngine.CenterText("+================================================================================+"));
             Console.ForegroundColor = ConsoleColor.White;
+            //لطباعة البيانات في الاماكن المحددة
             Console.SetCursorPosition(42, 3);
             string username = Validation.ValidataUsername(Console.ReadLine(), 42, 3, 0, 14);
             Console.SetCursorPosition(42, 4);
@@ -138,6 +139,7 @@ namespace Mini_Fitness_Tracker.Ui
             Console.ReadKey();
             Console.Clear();
         }
+        //شكل القائمة الرئيسية المعروضة للمستخدم
         public static int mainMenu()
         {
             Console.Clear();
@@ -157,6 +159,7 @@ namespace Mini_Fitness_Tracker.Ui
 
             return option;
         }
+        //شكل قائمة الصفحة الشخصية للمستخدم
         public static int ProfileOptionMenu()
         {
             Console.Clear();
@@ -171,6 +174,7 @@ namespace Mini_Fitness_Tracker.Ui
             int option = Validation.ValidataInputOption(0, 3, 24, 5, 0, 6);
             return option;
         }
+        //الشكل الخارجي الي هيظهر للمستخدم لما يعمل view
         public static void ViewProfile()
         {
             Console.Clear();
@@ -197,6 +201,7 @@ namespace Mini_Fitness_Tracker.Ui
             Console.ReadKey();
             Console.Clear();
         }
+        //للتعديل على الصفحة الرئيسية للمستخدم 
         public static int EditProfile()
         {
             Console.Clear();
@@ -218,6 +223,7 @@ namespace Mini_Fitness_Tracker.Ui
             switch (option)
             {
                 case 1:
+                    //الشكل الظاهر للتعديل على  الاسم
                     Console.WriteLine(FitnessAppEngine.CenterText(" | Enter new name   :                             |"));
                     Console.WriteLine(FitnessAppEngine.CenterText("+------------------------------------------------+"));
                     Console.ForegroundColor = ConsoleColor.White;
@@ -234,6 +240,7 @@ namespace Mini_Fitness_Tracker.Ui
                     Console.Clear();
                     return option;
                 case 2:
+                    //الشكل الظاهر للتعديل على  العمر
                     Console.WriteLine(FitnessAppEngine.CenterText(" | Enter new age    :                             |"));
                     Console.WriteLine(FitnessAppEngine.CenterText("+------------------------------------------------+"));
                     Console.ForegroundColor = ConsoleColor.White;
@@ -250,6 +257,7 @@ namespace Mini_Fitness_Tracker.Ui
                     Console.Clear();
                     return option;
                 case 3:
+                    //الشكل الظاهر للتعديل على  الطول
                     Console.WriteLine(FitnessAppEngine.CenterText(" | Enter new height (CM):                         |"));
                     Console.WriteLine(FitnessAppEngine.CenterText("+------------------------------------------------+"));
                     Console.ForegroundColor = ConsoleColor.White;
@@ -266,6 +274,7 @@ namespace Mini_Fitness_Tracker.Ui
                     Console.Clear();
                     return option;
                 case 4:
+                    //الشكل الظاهر للتعديل على  الوزن
                     Console.WriteLine(FitnessAppEngine.CenterText(" | Enter new weight (Kg):                         |"));
                     Console.WriteLine(FitnessAppEngine.CenterText("+------------------------------------------------+"));
                     Console.ForegroundColor = ConsoleColor.White;
@@ -282,16 +291,18 @@ namespace Mini_Fitness_Tracker.Ui
                     Console.Clear();
                     return option;
                 case 5:
+                    //للرجوع لقائمة الصفحة الرئيسية للمستخدم
                     Console.ResetColor();
                     FitnessAppEngine.SwitchProfile();
                     break;
                 case 0:
-                    Environment.Exit(0);
+                    Environment.Exit(0);//لانهاء البرنامج 
                     break;
             }
             return 0;
 
         }
+        //لعرض قائمة التمارين
         public static int ExercisesOptionMenu()
         {
             Console.Clear();
@@ -307,7 +318,7 @@ namespace Mini_Fitness_Tracker.Ui
             int option = Validation.ValidataInputOption(0, 4, 24, 6, 0, 7);
             return option;
         }
-
+        // لاختيار اسم التمرين بعد اختيار الفئة والوقت واختيار اذا كان المستخدم يريد حفظه ام لا
         public static void CalculateExercisesCalories(int exerciseOption)
         {
             Console.Clear();
@@ -346,6 +357,7 @@ namespace Mini_Fitness_Tracker.Ui
                     break;
             }
         }
+        // لعرض قائمة الخطة للمستخدم في التمارين
         public static int WorkoutPlanOptionMenu()
         {
             Console.Clear();
@@ -361,6 +373,7 @@ namespace Mini_Fitness_Tracker.Ui
             int option = Validation.ValidataInputOption(0, 4, 24, 6, 0, 5);
             return option;
         }
+        //لعرض التمارين المسجلة في اليوم الحالي 
         public static int ViewTodayWorkoutPlan(int d)
         {
             double totalCalories = 0;
@@ -426,6 +439,7 @@ namespace Mini_Fitness_Tracker.Ui
             }
             return YAxis;
         }
+        //لحذف تمرين معين من الخطة اليومية للمستخدم
         public static void DeleteExercisesFromWorkoutPlan()
         {
             int YAxis = ViewTodayWorkoutPlan(0);
@@ -456,6 +470,7 @@ namespace Mini_Fitness_Tracker.Ui
                 FitnessAppEngine.SwitchWorkOutPlan();
             }
         }
+        //لعرض القائمة انجاز التمارين
         public static int ProgressOptionMenu()
         {
             Console.Clear();
@@ -470,6 +485,7 @@ namespace Mini_Fitness_Tracker.Ui
             int option = Validation.ValidataInputOption(0, 3, 24, 5, 0, 6);
             return option;
         }
+        //لعرض الانجاز اليومي من الوقت وعدد السعرات المحروقة
         public static void ViewDailyProgress()
         {
             Console.Clear();
@@ -487,6 +503,7 @@ namespace Mini_Fitness_Tracker.Ui
             Console.ReadKey();
             Console.Clear();
         }
+        //لعرض الانجاز الاسبوعي من الوقت وعدد السعرات المحروقة
         public static void ViewWeeklyProgress()
         {
             Console.Clear();

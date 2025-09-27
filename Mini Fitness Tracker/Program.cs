@@ -15,8 +15,9 @@ namespace Mini_Fitness_Tracker
 
         static void Main()
         {
+            // استدعاء الواجهة الرئيسية
             ConsoleUI.DisplayWelcomeMessage();
-            while (true)
+            while (true)//عشان يبقى البرنامج شغال دايما
             {
                 FitnessAppEngine.Run();
             }

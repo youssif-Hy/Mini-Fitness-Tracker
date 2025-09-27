@@ -130,7 +130,7 @@ namespace Mini_Fitness_Tracker.Engine
             while (true)
             {
                 //if user's name valid return it
-                if (username.Length >= 5 && !username.Contains(" "))
+                if (username.Length >= 5 && !username.Contains(" ") && !username.Contains(","))
                 {
                     Space(title, xaxis1, yaxis1);
                     string title1 = "Username already exists, Please enter a different username, try again. ";
@@ -212,7 +212,7 @@ namespace Mini_Fitness_Tracker.Engine
             string title = "Invalid password, Please enter a valid password (8 to 18 characters, no spaces, must contain both letters and numbers), try again. ";
             while (true)
             {
-                if (password.Length >= 8 && password.Length <= 18 && !password.Contains(" ") && password.Any(char.IsLetter) && password.Any(char.IsDigit))
+                if (password.Length >= 8 && password.Length <= 18 && !password.Contains(" ") && password.Any(char.IsLetter) && password.Any(char.IsDigit) && !password.Contains(","))
                 {
                     Space(title, xaxis1, yaxis1);
                     return password;

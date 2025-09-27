@@ -58,6 +58,7 @@ namespace Mini_Fitness_Tracker.Utils
             }
             return false;
         }
+        //
         public static bool CheckIfUsernameExists(string username)
         {
             if (File.Exists(UserDataFile)) // التحقق من وجود ملف بيانات المستخدمين
@@ -98,6 +99,7 @@ namespace Mini_Fitness_Tracker.Utils
 
             // اكتب كل السطور المعدلة مرة واحدة
             File.WriteAllLines(UserDataFile, updatedLines);
+            deleteNullLines();
         }
 
         public static void EditAge(int newAge)
@@ -121,6 +123,7 @@ namespace Mini_Fitness_Tracker.Utils
 
             // اكتب كل السطور المعدلة مرة واحدة
             File.WriteAllLines(UserDataFile, updatedLines);
+            deleteNullLines();
         }
         public static void EditHeight(double newHeight)
         {
@@ -143,6 +146,7 @@ namespace Mini_Fitness_Tracker.Utils
 
             // اكتب كل السطور المعدلة مرة واحدة
             File.WriteAllLines(UserDataFile, updatedLines);
+            deleteNullLines();
         }
         public static void EditWeight(double newWeight)
         {
@@ -165,6 +169,7 @@ namespace Mini_Fitness_Tracker.Utils
 
             // اكتب كل السطور المعدلة مرة واحدة
             File.WriteAllLines(UserDataFile, updatedLines);
+            deleteNullLines();
         }
         
         // إضافة خطة تمرين جديدة
@@ -208,6 +213,7 @@ namespace Mini_Fitness_Tracker.Utils
                     i++;
                 }
                 File.WriteAllLines(workoutplanfile, strings);
+                deleteNullLines();
             }
         }
 
@@ -331,6 +337,23 @@ namespace Mini_Fitness_Tracker.Utils
                 ConsoleUI.ViewWeeklyProgress();
             }
             
+        }
+        public static void deleteNullLines()
+        {
+            List<string> newlines = new List<string>();
+            string workoutplanfile = $"{User.Username}_workoutplans.txt";
+            if (File.Exists(workoutplanfile))
+            {
+                string[] lines = File.ReadAllLines(workoutplanfile);
+                foreach (string line in lines)
+                {
+                    if(line != null)
+                    {
+                        newlines.Add(line);
+                    }
+                }
+                File.WriteAllLines(workoutplanfile, newlines);
+            }
         }
 
     }
