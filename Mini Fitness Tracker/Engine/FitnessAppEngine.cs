@@ -11,6 +11,7 @@ namespace Mini_Fitness_Tracker.Engine
 {
     public class FitnessAppEngine
     {
+        
         public static void Run()
         {
             Console.OutputEncoding = Encoding.UTF8;
@@ -77,8 +78,8 @@ namespace Mini_Fitness_Tracker.Engine
                 case 3: // Workout Plan
                     SwitchWorkOutPlan();
                     break;
-                case 4: // Progress
-                        // Handle progress tracking
+                case 4:
+                    ShowProgressMenu();
                     break;
                 case 5:
                     Run();
@@ -263,16 +264,17 @@ namespace Mini_Fitness_Tracker.Engine
             }
             return 0;
         }   
-        public static void ShowProgresseMenue()
+        public static void ShowProgressMenu()
         {
             int option = ConsoleUI.ProgressOptionMenu();
             switch(option)
             {
                 case 1:
-                    //daily
+                    DataHandler.ProgressToday();
+                    ShowProgressMenu();
                     break;
                 case 2:
-                    //weekly
+                    DataHandler.ProgressWeek();
                     break;
                 case 3:
                     SwitchMenu();
