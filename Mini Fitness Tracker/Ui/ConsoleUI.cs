@@ -460,8 +460,8 @@ namespace Mini_Fitness_Tracker.Ui
         {
             Console.Clear();
             Console.WriteLine(FitnessAppEngine.CenterText("📊 Progress Menu 📊"));
-            Console.WriteLine("1. View daily Progress");
-            Console.WriteLine("2. View weekly Progress");
+            Console.WriteLine("1. View today's Progress");
+            Console.WriteLine("2. View last 7 days' Progress");
             Console.WriteLine("3. Back to Main Menu");
             Console.WriteLine("0. Exit");
             Console.ForegroundColor = ConsoleColor.DarkGray;
@@ -474,7 +474,7 @@ namespace Mini_Fitness_Tracker.Ui
         {
             Console.Clear();
             Console.WriteLine(FitnessAppEngine.CenterText("+====================================================+"));
-            Console.WriteLine(FitnessAppEngine.CenterText("|                   Daily Progress                   |"));
+            Console.WriteLine(FitnessAppEngine.CenterText("|                   Today's Progress                 |"));
             Console.WriteLine(FitnessAppEngine.CenterText("+====================================================+"));
             Console.WriteLine(FitnessAppEngine.CenterText("| Workout Time (minutes) :                           |"));
             Console.WriteLine(FitnessAppEngine.CenterText("| Calories Burned        :                           |"));
@@ -489,11 +489,11 @@ namespace Mini_Fitness_Tracker.Ui
         {
             Console.Clear();
             Console.WriteLine(FitnessAppEngine.CenterText("+====================================================+"));
-            Console.WriteLine(FitnessAppEngine.CenterText("|                  Weekly Progress                   |"));
+            Console.WriteLine(FitnessAppEngine.CenterText("|                Last 7 days' Progress               |"));
             Console.WriteLine(FitnessAppEngine.CenterText("+====================================================+"));
-            Console.WriteLine(FitnessAppEngine.CenterText("| Total Workout time (minutes)   :                   |"));
-            Console.WriteLine(FitnessAppEngine.CenterText("| Total Calories burned per day  :                   |"));
-            Console.WriteLine(FitnessAppEngine.CenterText("| Total Calories burned In week  :                   |"));
+            Console.WriteLine(FitnessAppEngine.CenterText("| Total Workout time (minutes)     :                 |"));
+            Console.WriteLine(FitnessAppEngine.CenterText("| Average Calories burned per day  :                 |"));
+            Console.WriteLine(FitnessAppEngine.CenterText("| Total Calories burned            :                 |"));
             Console.WriteLine(FitnessAppEngine.CenterText("+====================================================+"));
             Console.WriteLine(FitnessAppEngine.CenterText("|     Press any key to Back to Progress menu📄       |"));
             Console.WriteLine(FitnessAppEngine.CenterText("+====================================================+"));

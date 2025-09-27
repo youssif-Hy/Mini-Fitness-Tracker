@@ -196,7 +196,7 @@ namespace Mini_Fitness_Tracker.Utils
         }
         public static void AddWorkOutPlanInList()
         {
-            
+            WorkoutPlan.WorkoutPlans.Clear();
             string workoutplanfile = $"{User.Username}_workoutplans.txt";
             if (File.Exists(workoutplanfile)) // التحقق من وجود ملف بيانات المستخدمين
             {
@@ -247,12 +247,14 @@ namespace Mini_Fitness_Tracker.Utils
             }
             return false;
         }
-        public static int DurationProgress()
+        public static void ProgressToday()
         {
             int totalDuration = 0;
+            double totalCalories = 0;
             string workoutplanfile = $"{User.Username}_workoutplans.txt";
             if (File.Exists(workoutplanfile)) // التحقق من وجود ملف بيانات المستخدمين
             {
+                Progresstracker prgrs = new Progresstracker();
                 string[] lines = File.ReadAllLines(workoutplanfile);// قراءة جميع الأسطر من الملف
                 foreach (string line in lines)
                 {
@@ -261,31 +263,53 @@ namespace Mini_Fitness_Tracker.Utils
                     if (parts[0] == DateTime.Today.ToString("d"))
                     {
                         totalDuration += int.Parse(parts[3]);
+                        totalCalories += double.Parse(parts[2]);
                     }
                 }
-                return totalDuration;
+                prgrs.UpdatedayProgress(totalDuration,totalCalories);
+                ConsoleUI.ViewDailyProgress();
             }
-            return 0;
         }
-        public static double CaloriesBurnedProgress()
+        public static void ProgressWeek()
         {
-            int totalCalories = 0;
             string workoutplanfile = $"{User.Username}_workoutplans.txt";
             if (File.Exists(workoutplanfile)) // التحقق من وجود ملف بيانات المستخدمين
             {
+                Progresstracker prgrs = new Progresstracker();
                 string[] lines = File.ReadAllLines(workoutplanfile);// قراءة جميع الأسطر من الملف
-                foreach (string line in lines)
+               
+                DateTime latestDate = DateTime.Parse(lines[lines.Length-1].Split(',')[0]);
+                DateTime minDate = latestDate.AddDays(-6);
+
+
+                int totalDuration = 0;
+                double totalCalories = 0;
+                for (int i=lines.Length-1;i>=0;i--)
                 {
-                    // تقسيم السطر الى جزاء باتخدام الفاصلة كفاصل
-                    string[] parts = line.Split(',');
-                    if (parts[0] == DateTime.Today.ToString("d"))
+
+
+                    string[] parts = lines[i].Split(',');
+                    DateTime date = DateTime.Parse(parts[0]);
+                    if (date < minDate)
                     {
-                        totalCalories += int.Parse(parts[2]);
+                        break;
                     }
+
+
+
+                    int duration = int.Parse(parts[3]);
+                    double calories = double.Parse(parts[2]);
+
+
+
+                    totalCalories += calories;
+                    totalDuration += duration;
                 }
-                return totalCalories;
+                prgrs.UpdateweekProgress(totalDuration, totalCalories);
+                ConsoleUI.ViewWeeklyProgress();
             }
-            return 0;
+            
         }
+
     }
 }
