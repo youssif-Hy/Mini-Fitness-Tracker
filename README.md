@@ -129,4 +129,4 @@ Total: 30 min | 270 cal
 ---
 
 ## 📸 Presentation  
-For full details, see the [Project Presentation (PPTX)]((https://docs.google.com/presentation/d/1_fI0bA0v3-WTkVtwQQas5NAR-PqR-2_e/edit?usp=sharing&ouid=116742114160676039432&rtpof=true&sd=true)).  
+For full details, see the [Project Presentation (PPT)](https://docs.google.com/presentation/d/1_fI0bA0v3-WTkVtwQQas5NAR-PqR-2_e/edit?usp=sharing&ouid=116742114160676039432&rtpof=true&sd=true).
