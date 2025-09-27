@@ -465,9 +465,9 @@ namespace Mini_Fitness_Tracker.Ui
             Console.WriteLine("3. Back to Main Menu");
             Console.WriteLine("0. Exit");
             Console.ForegroundColor = ConsoleColor.DarkGray;
-            Console.Write("Enter your choice (0-2):");
+            Console.Write("Enter your choice (0-3):");
             Console.ForegroundColor = ConsoleColor.White;
-            int option = Validation.ValidataInputOption(0, 2, 24, 5, 0, 6);
+            int option = Validation.ValidataInputOption(0, 3, 24, 5, 0, 6);
             return option;
         }
         public static void ViewDailyProgress()

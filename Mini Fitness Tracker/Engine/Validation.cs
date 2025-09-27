@@ -12,6 +12,7 @@ namespace Mini_Fitness_Tracker.Engine
 {
     public static class Validation
     {
+        
         //دالة ValidateInput تقوم بالتحقق من صحة الإدخال المدخل من قبل المستخدم
         public static int ValidataInput(string input, int xAxis, int yAxis, int xAxis1, int yAxis1)
         {
@@ -32,11 +33,12 @@ namespace Mini_Fitness_Tracker.Engine
                 }
                 else
                 {
-                    Space(title, xAxis1, yAxis1);
+                    Space(title, xAxis1, yAxis1);// مسح رسالة الخطأ
                     return value;
                 }
             }
         }
+
         public static int ValidataInputOption(int minOption,int maxOption, int xAxis, int yAxis, int xAxis1, int yAxis1)
         {
             int option;
@@ -73,6 +75,7 @@ namespace Mini_Fitness_Tracker.Engine
         {
             string title;
             List<string> validExerciseNames;
+
             if (exerciseOption == 1)
             {
                 title = "Invalid Exercise Name, Please enter a valid Exercise Name (ex. Running, Cycling, Swimming, Walking, Jump Rope, Stair Climbing, Dancing, Boxing, Rowing, Basketball, Tennis), try again. ";
@@ -97,11 +100,13 @@ namespace Mini_Fitness_Tracker.Engine
                  "yoga", "pilates", "stretching", "tai chi", "dance-based exercises", "balance exercises", "mobility exercises", "foam rolling"
                 };
             }
+
+
             while (true)
             {
                 if (validExerciseNames.Contains(exerciseName.ToLower()))
                 {
-                    Space(title, xaxis1, yaxis1);
+                    Space(title, xaxis1, yaxis1); //if treu clear the last error message
                     return exerciseName;
                 }
                 else
@@ -116,6 +121,7 @@ namespace Mini_Fitness_Tracker.Engine
                 }
             }
         }
+
         // دالة ValidateUsername تقوم بالتحقق من صحة اسم المستخدم المدخل
         public static string ValidataUsername(string username, int xaxis, int yaxis, int xaxis1, int yaxis1)
         {
@@ -123,6 +129,7 @@ namespace Mini_Fitness_Tracker.Engine
 
             while (true)
             {
+                //if user's name valid return it
                 if (username.Length >= 5 && !username.Contains(" "))
                 {
                     Space(title, xaxis1, yaxis1);
@@ -155,7 +162,8 @@ namespace Mini_Fitness_Tracker.Engine
                 }
             }
         }
-        // دالة ValiDataName تقوم بالتحقق من صحة الاسم المدخل
+
+        //method to validate name
         public static string ValiDataName(string name, int xaxis, int yaxis, int xaxis1, int yaxis1)
         {
             string title = "invalid name, Please enter a valid name (at least 8 characters,first and last name must be more than 3 characters) ,try again. ";
@@ -197,6 +205,7 @@ namespace Mini_Fitness_Tracker.Engine
                 }
             }
         }
+
         //دالة ValidatePassword تقوم بالتحقق من صحة كلمة المرور المدخلة
         public static string ValidataPassword(string password, int xaxis, int yaxis, int xaxis1, int yaxis1)
         {
@@ -221,6 +230,8 @@ namespace Mini_Fitness_Tracker.Engine
                 }
             }
         }
+
+        // دالة ValiDataAge تقوم بالتحقق من صحة العمر المدخل
         public static string ValiDataAge(string Age, int xaxis, int yaxis, int xaxis1, int yaxis1)
         {
             while (true)
@@ -306,7 +317,8 @@ namespace Mini_Fitness_Tracker.Engine
             {
                 string title = "Invalid Weight, Please enter a valid Weight , try again. ";
                 double Weight;
-                // محاولة تحليل التاريخ المدخل إلى كائن DateTime
+
+                // checking if the input can be parsed to double
                 if (double.TryParse(weight, out Weight))
                 {
 

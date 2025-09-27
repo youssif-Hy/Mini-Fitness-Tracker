@@ -9,6 +9,7 @@ namespace Mini_Fitness_Tracker.Models
 
     public  class User
     {
+        //class attributes
         private static string name;
         private static int age; 
         private static double weight;
@@ -16,6 +17,7 @@ namespace Mini_Fitness_Tracker.Models
         private static string username;
         private static string password;
 
+        //getters and setters
 
         public static string Name
         {
@@ -52,14 +54,10 @@ namespace Mini_Fitness_Tracker.Models
             get { return password; }
             set { password = value; }
         }
-        public static double CalculateBmi()
-        {
-            return weight / (height * height);
-        }
 
 
 
-
+        //main constructor
         public User(string username , string password,string name, int age, double height, double weight)
         {
             Username = username;

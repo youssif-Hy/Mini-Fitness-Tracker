@@ -10,9 +10,9 @@ namespace Mini_Fitness_Tracker.Models
     {
         private string name; // e.g., Runningwithgroup, Swimming22/2023
         private string type; // e.g., Cardio, Strength, Yoga
+        private int duration; // duration in minutes 
         private double caloriesBurnedPermin; // calories burned per minute
-        private double totalBurnedPermin; 
-        private int duration;
+        private double totalBurnedPermin; // total calories burned in a full workout
 
         // Constructor to initialize an exercise
         public Exercise(string name, string type, double caloriesBurnedPerMin, double TotalCaloriesBurned, int Duration)

@@ -15,12 +15,19 @@ namespace Mini_Fitness_Tracker.Utils
 {
     public static class DataHandler
     {
-        private static string UserDataFile = "users.txt";
+        private static string UserDataFile = "users.txt"; // ملف لتخزين بيانات المستخدمين
+        
+        // تسجيل مستخدم جديد
         public static void Register(string username, string password, string name, int age, double height, double weight)
         {
             string lines = $"{username},{password},{name},{age},{height},{weight}";
-            string[] parts = lines.Split(','); 
+
+            string[] parts = lines.Split(',');
+            
+            //save user data in user object
             User user = new User(parts[0], parts[1], parts[2], int.Parse(parts[3]), double.Parse(parts[4]), double.Parse(parts[5]));
+
+            //if file exists append the new user data, else create the file and write the user data
             if (File.Exists(UserDataFile))
             {
                 File.AppendAllText(UserDataFile, Environment.NewLine +lines);
@@ -30,6 +37,7 @@ namespace Mini_Fitness_Tracker.Utils
                 File.WriteAllText(UserDataFile, lines);
             }
         }
+        // التحقق من تسجيل الدخول
         public static bool CheckLogin(string username, string password)
         {
             if (File.Exists(UserDataFile)) // التحقق من وجود ملف بيانات المستخدمين
@@ -59,8 +67,8 @@ namespace Mini_Fitness_Tracker.Utils
                 {
                     // تقسيم السطر إلى أجزاء باستخدام الفاصلة كفاصل
                     string[] parts = line.Split(',');
-                    // التحقق من تطابق اسم المستخدم وكلمة المرور
 
+                    // التحقق من تطابق اسم المستخدم وكلمة المرور
                     if (parts[0] == username)
                     {
                         return true;
@@ -158,10 +166,14 @@ namespace Mini_Fitness_Tracker.Utils
             // اكتب كل السطور المعدلة مرة واحدة
             File.WriteAllLines(UserDataFile, updatedLines);
         }
+        
+        // إضافة خطة تمرين جديدة
         public static void AddWorkOutPlan(string exerciseName, double caloriesBurned, int duration)
         {
-            string workoutplanfile = $"{User.Username}_workoutplans.txt";
+            string workoutplanfile = $"{User.Username}_workoutplans.txt"; //name of file depends on username
+
             string lines = $"{DateTime.Today.ToString("d")},{exerciseName},{caloriesBurned},{duration}";
+
             if (File.Exists(workoutplanfile))
             {
                 File.AppendAllText(workoutplanfile, Environment.NewLine + lines);
@@ -171,6 +183,8 @@ namespace Mini_Fitness_Tracker.Utils
                 File.WriteAllText(workoutplanfile, lines);
             }
         }
+
+        // حذف خطة تمرين
         public static void deleteExerciseWorkOutPlan(int index)
         {
             string workoutplanfile = $"{User.Username}_workoutplans.txt";
@@ -178,11 +192,13 @@ namespace Mini_Fitness_Tracker.Utils
 
             if (File.Exists(workoutplanfile))
             {
-                List<string> strings = lines.ToList();
+                List<string> strings = lines.ToList(); // تحويل المصفوفة إلى قائمة لتسهيل الحذف
+
                 int i = 0;
                 foreach (var part in lines)
                 {
                     string[] parts = part.Split(',');
+
                     if (parts[0] == DateTime.Today.ToString("d"))
                     {  
                         strings.RemoveAt(index+i);
@@ -194,6 +210,8 @@ namespace Mini_Fitness_Tracker.Utils
                 File.WriteAllLines(workoutplanfile, strings);
             }
         }
+
+        // قراءة خطة التمرين من الملف وإضافتها إلى القائمة
         public static void AddWorkOutPlanInList()
         {
             WorkoutPlan.WorkoutPlans.Clear();
@@ -222,7 +240,9 @@ namespace Mini_Fitness_Tracker.Utils
                         {
                             type = "Yoga";
                         }
+                        //create exercise object and add it to the list
                         Exercise ex = new Exercise(parts[1], type, (double.Parse(parts[2]) / int.Parse(parts[3])), double.Parse(parts[2]), int.Parse(parts[3]));
+                        
                         WorkoutPlan.WorkoutPlans.Add(ex);
                     }
                 }
@@ -247,10 +267,12 @@ namespace Mini_Fitness_Tracker.Utils
             }
             return false;
         }
+
         public static void ProgressToday()
         {
             int totalDuration = 0;
             double totalCalories = 0;
+
             string workoutplanfile = $"{User.Username}_workoutplans.txt";
             if (File.Exists(workoutplanfile)) // التحقق من وجود ملف بيانات المستخدمين
             {
@@ -270,9 +292,11 @@ namespace Mini_Fitness_Tracker.Utils
                 ConsoleUI.ViewDailyProgress();
             }
         }
+
         public static void ProgressWeek()
         {
             string workoutplanfile = $"{User.Username}_workoutplans.txt";
+
             if (File.Exists(workoutplanfile)) // التحقق من وجود ملف بيانات المستخدمين
             {
                 Progresstracker prgrs = new Progresstracker();
@@ -284,9 +308,9 @@ namespace Mini_Fitness_Tracker.Utils
 
                 int totalDuration = 0;
                 double totalCalories = 0;
+
                 for (int i=lines.Length-1;i>=0;i--)
                 {
-
 
                     string[] parts = lines[i].Split(',');
                     DateTime date = DateTime.Parse(parts[0]);
@@ -296,10 +320,8 @@ namespace Mini_Fitness_Tracker.Utils
                     }
 
 
-
                     int duration = int.Parse(parts[3]);
                     double calories = double.Parse(parts[2]);
-
 
 
                     totalCalories += calories;

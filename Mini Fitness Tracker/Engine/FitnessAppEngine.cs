@@ -9,11 +9,13 @@ using Mini_Fitness_Tracker.Utils;
 
 namespace Mini_Fitness_Tracker.Engine
 {
+    // The main engine class for the Fitness Application
     public class FitnessAppEngine
     {
-        
+        // Entry point to run the application
         public static void Run()
         {
+            // Set console encoding to UTF-8 to support special characters
             Console.OutputEncoding = Encoding.UTF8;
 
             try
@@ -28,11 +30,11 @@ namespace Mini_Fitness_Tracker.Engine
                         {
                             Run();
                         }
-                        break;
+                    break;
 
                     case 2: // Register
                         ConsoleUI.Register();
-                        break;
+                    break;
 
                     case 0: // Exit
                         Console.Clear();
@@ -40,15 +42,14 @@ namespace Mini_Fitness_Tracker.Engine
                         Console.WriteLine(CenterText("Press any key to exit..."));
                         Console.ReadKey();
                         Environment.Exit(0);
-                        break;
+                    break;
 
                     default:
                         Console.WriteLine(CenterText("Invalid option selected."));
                         Console.ReadKey();
                         Console.Clear();
-                        break;
+                    break;
                 }
-
 
             }
             catch (Exception ex)
@@ -63,10 +64,13 @@ namespace Mini_Fitness_Tracker.Engine
         
             SwitchMenu();
         }
+
+        // Method to switch between different menus based on user input
         public static void SwitchMenu()
         {
             Console.Clear();
             int mainMenuChoice = ConsoleUI.mainMenu();
+
             switch (mainMenuChoice)
             {
                 case 1: // Profile    \/
@@ -95,6 +99,8 @@ namespace Mini_Fitness_Tracker.Engine
             }
             SwitchMenu();
         }
+
+        // Method to handle profile-related actions
         public static void SwitchProfile()
         {
 
@@ -117,6 +123,8 @@ namespace Mini_Fitness_Tracker.Engine
             SwitchProfile();
 
         }
+
+        // Method to handle exercise-related actions
         public static void SwitchExerciseOption()
         {
             int option = ConsoleUI.ExercisesOptionMenu();
@@ -136,6 +144,8 @@ namespace Mini_Fitness_Tracker.Engine
             }
             SwitchExerciseOption();
         }
+
+        // Method to handle workoutplan-related actions
         public static void SwitchWorkOutPlan()
         {
             int option = ConsoleUI.WorkoutPlanOptionMenu();
@@ -159,6 +169,8 @@ namespace Mini_Fitness_Tracker.Engine
             }
             SwitchWorkOutPlan();
         }
+
+        // Method to handle exercise type selection
         public static string switchExerciseType(int option)
         {
             switch (option)
@@ -173,6 +185,9 @@ namespace Mini_Fitness_Tracker.Engine
                     return "";
             }
         }
+
+        //method to calculate calories burned during exercises
+        //"mets" is metabolic equivalent of task: it's a (constant for one type of excerise) unit that estimates the amount of energy expended during physical activities
         public static double CalculateExercisesCalories(string exerciseName, int exerciseOption, double duration)
         {
             double METs =0;
@@ -180,7 +195,6 @@ namespace Mini_Fitness_Tracker.Engine
             switch (exerciseOption)
             {
                 case 1:
-
                     METs = switchOptionCardio(exerciseName);
                     break;
                 case 2:
@@ -197,6 +211,7 @@ namespace Mini_Fitness_Tracker.Engine
             return totalCaloriesBurned;
 
         }
+
         public static double switchOptionCardio(string exerciseName)
         {
             switch(exerciseName.ToLower())
@@ -220,6 +235,7 @@ namespace Mini_Fitness_Tracker.Engine
             }
             return 0;
         }
+
         public static double switchOptionStrength(string exerciseName)
         {
             switch (exerciseName.ToLower())
@@ -263,7 +279,9 @@ namespace Mini_Fitness_Tracker.Engine
                     return 2;
             }
             return 0;
-        }   
+        }
+
+        // Displays progress menu and handles user choices
         public static void ShowProgressMenu()
         {
             int option = ConsoleUI.ProgressOptionMenu();
@@ -284,6 +302,7 @@ namespace Mini_Fitness_Tracker.Engine
                     break;
             }
         }
+
         // Center text in console window
         public static string CenterText(string text)
         {
