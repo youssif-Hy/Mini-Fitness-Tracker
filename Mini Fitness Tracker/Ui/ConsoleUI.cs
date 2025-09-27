@@ -433,7 +433,7 @@ namespace Mini_Fitness_Tracker.Ui
             Console.ForegroundColor = ConsoleColor.DarkGray;
             Console.WriteLine("Enter the number of the exercise to delete or 0 to cancel:");
             Console.ForegroundColor = ConsoleColor.White;
-            int option = Validation.ValidataInputOption(0, WorkoutPlan.WorkoutPlans.Count, 59, YAxis + 3, 0, YAxis + 2);
+            int option = Validation.ValidataInputOption(0, WorkoutPlan.WorkoutPlans.Count, 59, YAxis + 3, 0, YAxis + 4);
             Console.SetCursorPosition(59, YAxis + 3);
             if (option != 0)
             {
@@ -473,6 +473,7 @@ namespace Mini_Fitness_Tracker.Ui
         public static void ViewDailyProgress()
         {
             Console.Clear();
+            Console.ForegroundColor= ConsoleColor.Cyan;
             Console.WriteLine(FitnessAppEngine.CenterText("+====================================================+"));
             Console.WriteLine(FitnessAppEngine.CenterText("|                   Today's Progress                 |"));
             Console.WriteLine(FitnessAppEngine.CenterText("+====================================================+"));
@@ -482,12 +483,14 @@ namespace Mini_Fitness_Tracker.Ui
             Console.WriteLine(FitnessAppEngine.CenterText("|     Press any key to Back to Progress menu📄       |"));
             Console.WriteLine(FitnessAppEngine.CenterText("+====================================================+"));
             Progresstracker.DisplaydailyProgress();
+            Console.ResetColor();
             Console.ReadKey();
             Console.Clear();
         }
         public static void ViewWeeklyProgress()
         {
             Console.Clear();
+            Console.ForegroundColor = ConsoleColor.Cyan;
             Console.WriteLine(FitnessAppEngine.CenterText("+====================================================+"));
             Console.WriteLine(FitnessAppEngine.CenterText("|                Last 7 days' Progress               |"));
             Console.WriteLine(FitnessAppEngine.CenterText("+====================================================+"));
@@ -498,6 +501,7 @@ namespace Mini_Fitness_Tracker.Ui
             Console.WriteLine(FitnessAppEngine.CenterText("|     Press any key to Back to Progress menu📄       |"));
             Console.WriteLine(FitnessAppEngine.CenterText("+====================================================+"));
             Progresstracker.DisplayweeklyProgress();
+            Console.ResetColor();
             Console.ReadKey();
             Console.Clear();
         }
